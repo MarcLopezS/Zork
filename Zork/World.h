@@ -11,6 +11,10 @@ public:
 	
 	World();
 
+	bool parseUserCommand(std::vector<std::string>& arguments);
+	bool handleOnlyCommand(const std::string& command);
+
+
 	std::vector<Entity*> entities;
 	bool isGameOver;
 };

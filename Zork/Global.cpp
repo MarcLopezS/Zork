@@ -27,5 +27,5 @@ std::string toLowerCase(std::string str)
 
 bool sameName(const std::string& str1, const std::string& str2)
 {
-	return toLowerCase(str1) == toLowerCase(str2);
+	return str1 == str2;
 }

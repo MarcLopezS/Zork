@@ -22,11 +22,16 @@ int main()
         std::getline(std::cin, input);
         std::cout << "\n";
 
+        input = toLowerCase(input);
+
         userCommands = tokenize(input);
 
-        //TODO: call function to parse the user command
-
+        if (!world.parseUserCommand(userCommands))
+            std::cout << "That's not a command I recognise or have been used in the wrong way.\n" << std::endl;
+        
     }
+
+    std::cout << "\nThank you for playing!" << std::endl;
 
     return 0;
 }
