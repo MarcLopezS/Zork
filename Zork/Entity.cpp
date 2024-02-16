@@ -1,5 +1,5 @@
 #include "Entity.h"
 
-void Entity::Update()
+void Entity::update()
 {
 }

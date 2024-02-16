@@ -9,7 +9,10 @@ class World
 {
 public:
 	
+	World();
+
 	std::vector<Entity*> entities;
+	bool isGameOver;
 };
 
 #endif //World_h

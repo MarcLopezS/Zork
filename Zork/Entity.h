@@ -18,7 +18,7 @@ class Entity
 {
 public:
 
-	virtual void Update();
+	virtual void update();
 
 	std::string name;
 	std::string description;
