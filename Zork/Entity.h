@@ -3,8 +3,9 @@
 
 #include <string>
 #include <list>
+#include <iostream>
 
-enum EntityType {
+enum class EntityType {
 	ENTITY,
 	ROOM,
 	EXIT,
@@ -18,11 +19,17 @@ class Entity
 {
 public:
 
-	virtual void update();
+	Entity(const std::string& nameEntity, const std::string& descriptionEntity);
+
+	virtual void look();
+
+	std::list<Entity*> findAll(EntityType type);
 
 	std::string name;
 	std::string description;
+	
 	EntityType type;
+	
 	std::list<Entity*> container;
 };
 

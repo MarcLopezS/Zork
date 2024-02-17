@@ -24,8 +24,3 @@ std::string toLowerCase(std::string str)
 	std::transform(str.begin(), str.end(), str.begin(), ::tolower);
 	return str;
 }
-
-bool sameName(const std::string& str1, const std::string& str2)
-{
-	return str1 == str2;
-}

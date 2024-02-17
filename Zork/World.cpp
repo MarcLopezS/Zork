@@ -28,7 +28,7 @@ bool World::handleOnlyCommand(const std::string& command)
 {
 	bool handleOK = true;
 
-	if (sameName(command, "north") || sameName(command, "n"))
+	if(command == "north" || command == "n")
 	{
 		//TODO: player action
 	}

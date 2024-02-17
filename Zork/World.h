@@ -1,7 +1,6 @@
 #ifndef World_h
 #define World_h
 
-#include <iostream>
 #include <vector>
 #include "Entity.h"
 

@@ -5,6 +5,7 @@
 
 class Room : public Entity
 {
+	void look() override;
 };
 
 #endif //Room_h
