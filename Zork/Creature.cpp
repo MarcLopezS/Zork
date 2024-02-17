@@ -1,4 +1,5 @@
 #include "Creature.h"
+#include "Room.h"
 
 
 Creature::Creature(const std::string& nameCreature, const std::string& descriptCreature, Room* location)
@@ -11,6 +12,3 @@ Creature::~Creature()
 {
 }
 
-void Creature::Go(const std::string& userCommand)
-{
-}

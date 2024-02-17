@@ -25,3 +25,8 @@ std::list<Entity*> Entity::findAll(EntityType type)
 	
 	return allEntityType;
 }
+
+void Entity::updateParent(Entity* destinyParent)
+{
+	parent = destinyParent;
+}

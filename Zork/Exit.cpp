@@ -1,4 +1,5 @@
 #include "Exit.h"
+#include "Room.h"
 
 
 Exit::Exit(const std::string& dir, const std::string& nameExit, const std::string& descriptionExit, Entity* parent1, Entity* parent2)
@@ -47,4 +48,14 @@ std::string Exit::dirExitRoom(Room* room)
 		dir = dirDestination;
 
 	return dir;	
+}
+
+Room* Exit::getRoomDestination(Room* room)
+{
+	if (room == source)
+		return destination;
+	else if (room == destination)
+		return source;
+
+	return nullptr; //if not found
 }

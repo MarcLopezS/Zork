@@ -1,13 +1,2 @@
-﻿  Creature.cpp
-  Entity.cpp
-  Exit.cpp
-  Global.cpp
-  Item.cpp
-  NPC.cpp
-  Player.cpp
-  Room.cpp
-  World.cpp
-  main.cpp
-  Generating Code...
-  LINK : C:\Users\GAMER\Desktop\Proyecto juego plataformas\Zork\Zork\Debug\Zork.exe not found or not built by the last incremental link; performing full link
+﻿  Player.cpp
   Zork.vcxproj -> C:\Users\GAMER\Desktop\Proyecto juego plataformas\Zork\Zork\Debug\Zork.exe

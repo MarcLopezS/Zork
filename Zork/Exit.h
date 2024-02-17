@@ -2,10 +2,9 @@
 #define Exit_h
 
 #include "Entity.h"
-#include "Room.h"
 #include "NameCommands.h"
 
-NameCommands nameComm;
+class Room;
 
 class Exit : public Entity
 {
@@ -15,13 +14,14 @@ public:
 
 	void detectOpositeDir(const std::string& dirSource);
 	std::string dirExitRoom(Room* room);
+	Room* getRoomDestination(Room* room);
 
 	std::string dirSource;
 	std::string dirDestination;
 
 	Room* source;
 	Room* destination;
-
+	NameCommands nameComm;
 };
 
 #endif //Exit_h
