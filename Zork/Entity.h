@@ -19,7 +19,7 @@ class Entity
 {
 public:
 
-	Entity(const std::string& nameEntity, const std::string& descriptionEntity);
+	Entity(const std::string& nameEntity, const std::string& descriptionEntity, Entity* parentEntity);
 
 	virtual void look();
 
@@ -30,7 +30,8 @@ public:
 	
 	EntityType type;
 	
-	std::list<Entity*> container;
+	Entity* parent;
+	std::list<Entity*> containerEntities;
 };
 
 #endif //Entity_h
