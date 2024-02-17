@@ -5,6 +5,9 @@
 
 class Room : public Entity
 {
+	Room(const std::string& nameRoom, const std::string& descriptionRoom);
+	~Room();
+
 	void look() override;
 };
 

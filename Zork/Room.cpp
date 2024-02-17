@@ -1,8 +1,20 @@
 #include "Room.h"
 #include "Exit.h"
 
+Room::Room(const std::string& nameRoom, const std::string& descriptionRoom)
+	:Entity(nameRoom,descriptionRoom,nullptr)
+{
+	type = EntityType::ROOM;
+}
+
+Room::~Room()
+{
+}
+
 void Room::look()
 {
+	std::cout << description << std::endl;
+
 	for (Entity* entity : containerEntities)
 	{
 		switch (type)
