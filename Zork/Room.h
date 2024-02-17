@@ -3,7 +3,6 @@
 
 #include "Entity.h"
 
-class Exit;
 
 class Room : public Entity
 {
@@ -14,7 +13,6 @@ public:
 
 	void look() override;
 
-	std::list<Exit*> getAllExitRoom();
 };
 
 #endif //Room_h

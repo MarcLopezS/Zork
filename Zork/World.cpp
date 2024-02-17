@@ -13,11 +13,20 @@ World::World()
 	Room* livingRoom = new Room("Living Room", "This is my big living room.");
 	Room* bathroom = new Room("Bathroom", "This is my beloved bathroom.");
 
+	entities.push_back(bedroom);
+	entities.push_back(livingRoom);
+	entities.push_back(bathroom);
+
 	Exit* exitBedroom = new Exit(nameCommand.SOUTH_1, "Bedroom door", "This door comunicates my bedroom with the living room.", bedroom, livingRoom);
 	Exit* exitBathroom = new Exit(nameCommand.WEST_1, "Bathroom door", "This door communicates my bedroom with the bathroom.", bedroom, bathroom);
+	
+	entities.push_back(exitBedroom);
+	entities.push_back(exitBathroom);
+
 
 	player = new Player("Marc", "The player of this game", bedroom);
 
+	entities.push_back(player);
 }
 
 bool World::parseUserCommand(std::vector<std::string>& arguments)

@@ -16,15 +16,20 @@ Player::~Player()
 
 bool Player::Go(const std::string& userCommand)
 {
-	std::list<Exit*> exitList = static_cast<Room*>(parent)->getAllExitRoom();
+	//get all exit entities from room parent
+	std::list<Entity*> exitList = static_cast<Room*>(parent)->findAll(EntityType::EXIT);
+	
+	Exit* ex;
 
-	for (Exit* exit : exitList)
+	for (Entity* exitEntity : exitList)
 	{
-		if (exit->dirExitRoom(location) == userCommand)
+		ex = static_cast<Exit*>(exitEntity);
+
+		if (ex->dirExitRoom(location) == userCommand)
 		{
-			updateParent(exit->getRoomDestination(location));
+			updateParent(ex->getRoomDestination(location));
 			location = static_cast<Room*>(parent);
-			std::cout << "I passed the " + exit->name + " and arrived to " + parent->name + "." << std::endl;
+			std::cout << "I passed the " + ex->name + " and arrived to " + parent->name + "." << std::endl;
 			return true;
 		}
 	}

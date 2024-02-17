@@ -34,15 +34,3 @@ void Room::look()
 	}
 }
 
-std::list<Exit*> Room::getAllExitRoom()
-{
-	std::list<Exit*> exitList;
-
-	for (Entity* entity : containerEntities)
-	{
-		if (entity->type == EntityType::EXIT)
-			exitList.push_back(static_cast<Exit*>(entity));
-	}
-
-	return exitList;
-}

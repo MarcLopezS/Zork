@@ -28,5 +28,11 @@ std::list<Entity*> Entity::findAll(EntityType type)
 
 void Entity::updateParent(Entity* destinyParent)
 {
+	if(parent != nullptr)
+		parent->containerEntities.remove(this);
+	
 	parent = destinyParent;
+	
+	if(parent != nullptr)
+		parent->containerEntities.push_back(this);
 }
