@@ -14,6 +14,7 @@ public:
 	Exit(const std::string& dir, const std::string& nameExit, const std::string& descriptionExit, Entity* parent1, Entity* parent2);
 
 	void detectOpositeDir(const std::string& dirSource);
+	std::string dirExitRoom(Room* room);
 
 	std::string dirSource;
 	std::string dirDestination;

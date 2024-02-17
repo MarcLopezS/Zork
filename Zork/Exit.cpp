@@ -7,12 +7,13 @@ Exit::Exit(const std::string& dir, const std::string& nameExit, const std::strin
 	dirSource = dir;
 	detectOpositeDir(dir);
 
-	source = (Room*)parent1;
-	destination = (Room*)parent2;
+	source = static_cast<Room*>(parent1);
+	destination = static_cast<Room*>(parent2);
 
 	if (destination != nullptr)
 		destination->containerEntities.push_back(this);
 }
+
 void Exit::detectOpositeDir(const std::string& dirSource)
 {
 	if (dirSource == nameComm.NORTH_1 || dirSource == nameComm.NORTH_2)
@@ -32,4 +33,16 @@ void Exit::detectOpositeDir(const std::string& dirSource)
 
 	else if (dirSource == nameComm.DOWN_1 || dirSource == nameComm.DOWN_2)
 		dirDestination = nameComm.UP_1;
+}
+
+std::string Exit::dirExitRoom(Room* room)
+{
+	std::string dir;
+
+	if (room == source)
+		dir = dirSource;
+	else if (room == destination)
+		dir = dirDestination;
+
+	return dir;	
 }
