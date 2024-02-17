@@ -2,7 +2,9 @@
 #define World_h
 
 #include <vector>
+
 #include "Entity.h"
+#include "NameCommands.h"
 
 class World
 {
@@ -16,6 +18,7 @@ public:
 
 	std::vector<Entity*> entities;
 	bool isGameOver;
+	NameCommands nameCommand;
 };
 
 #endif //World_h

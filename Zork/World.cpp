@@ -1,6 +1,7 @@
 #include "World.h"
 #include "Global.h"
 
+
 World::World()
 {
 	isGameOver = false;
@@ -28,7 +29,7 @@ bool World::handleOnlyCommand(const std::string& command)
 {
 	bool handleOK = true;
 
-	if(command == "north" || command == "n")
+	if(command == nameCommand.NORTH_1 || command == nameCommand.NORTH_2)
 	{
 		//TODO: player action
 	}
