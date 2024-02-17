@@ -11,8 +11,10 @@ World::World()
 
 	Room* bedroom = new Room("Bedroom", "This is my bedroom.");
 	Room* livingRoom = new Room("Living Room", "This is my big living room.");
-	
-	Exit* exitBedroom = new Exit(nameCommand.SOUTH_1, "Bedroom door", "The door tha comunicates my bedroom with the living room.", bedroom, livingRoom);
+	Room* bathroom = new Room("Bathroom", "This is my beloved bathroom.");
+
+	Exit* exitBedroom = new Exit(nameCommand.SOUTH_1, "Bedroom door", "This door comunicates my bedroom with the living room.", bedroom, livingRoom);
+	Exit* exitBathroom = new Exit(nameCommand.WEST_1, "Bathroom door", "This door communicates my bedroom with the bathroom.", bedroom, bathroom);
 
 	player = new Player("Marc", "The player of this game", bedroom);
 
