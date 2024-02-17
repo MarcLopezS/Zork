@@ -4,6 +4,8 @@
 Exit::Exit(const std::string& dir, const std::string& nameExit, const std::string& descriptionExit, Entity* parent1, Entity* parent2)
 	:Entity(nameExit, descriptionExit,parent1)
 {
+	type = EntityType::EXIT;
+
 	dirSource = dir;
 	detectOpositeDir(dir);
 
