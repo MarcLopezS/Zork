@@ -82,11 +82,30 @@ void Player::take(std::vector<std::string>& argsUser)
 	else { //three arguments
 		//TODO: implement TAKE ... FROM ...
 	}
-	
 
 	if (!isTaken)
 		std::cout << "There is nothing in here with that name." << std::endl;
 
+}
+
+
+void Player::drop(const std::string& nameItem)
+{
+	bool isDropped = false;
+
+	for (Entity* item : containerEntities)
+	{
+		if (toLowerCase(item->name) == nameItem)
+		{
+			item->updateParent(location);
+			std::cout << "You leave " + item->name + " on the floor." << std::endl;
+			isDropped = true;
+			break;
+		}
+	}
+
+	if (!isDropped)
+		std::cout << "I don't have anything like that to drop it." << std::endl;
 }
 
 Item* Player::findContainerItem(const std::string& nameItem)

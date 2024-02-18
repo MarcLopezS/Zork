@@ -31,6 +31,7 @@ void World::setupGame()
 
 	Item* photo = new Item("Photo", "This is a memory of my family going to the mountains.", bedroom, false);
 	Item* bottle = new Item("Bottle", "I use this bottle for drinking outside home.", livingRoom,false);
+	Item* backpack = new Item("Backpack", "My favourite backpack. It's a little worn.", bedroom, true);
 
 	entities.push_back(photo);
 	entities.push_back(bottle);
@@ -67,27 +68,27 @@ bool World::handleOnlyCommand(const std::string& command)
 
 	if(command == nameCommand.NORTH_1 || command == nameCommand.NORTH_2)
 	{
-		player->go(nameCommand.NORTH_1);
+		handleOK = player->go(nameCommand.NORTH_1);
 	}
 	else if (command == nameCommand.SOUTH_1 || command == nameCommand.SOUTH_2)
 	{
-		player->go(nameCommand.SOUTH_1);
+		handleOK = player->go(nameCommand.SOUTH_1);
 	}
 	else if (command == nameCommand.EAST_1 || command == nameCommand.EAST_2)
 	{
-		player->go(nameCommand.EAST_1);
+		handleOK = player->go(nameCommand.EAST_1);
 	}
 	else if (command == nameCommand.WEST_1 || command == nameCommand.WEST_2)
 	{
-		player->go(nameCommand.WEST_1);
+		handleOK = player->go(nameCommand.WEST_1);
 	}
 	else if (command == nameCommand.UP_1 || command == nameCommand.UP_2)
 	{
-		player->go(nameCommand.UP_1);
+		handleOK = player->go(nameCommand.UP_1);
 	}
 	else if (command == nameCommand.DOWN_1 || command == nameCommand.DOWN_2)
 	{
-		player->go(nameCommand.DOWN_1);
+		handleOK = player->go(nameCommand.DOWN_1);
 	}
 	else if (command == nameCommand.LOOK_1 || command == nameCommand.LOOK_2)
 	{
@@ -116,6 +117,10 @@ bool World::handleOneArgument(std::vector<std::string>& arguments)
 	if (arguments[0] == nameCommand.TAKE)
 	{
 		player->take(arguments);
+	}
+	else if (arguments[0] == nameCommand.DROP)
+	{
+		player->drop(arguments[1]);
 	}
 	else
 	{

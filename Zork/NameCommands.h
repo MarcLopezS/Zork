@@ -20,7 +20,7 @@ struct NameCommands {
 	const std::string INVENTORY_2 = "i";
 	const std::string TAKE = "take";
 	const std::string FROM = "from";
-
+	const std::string DROP = "drop";
 
 	const std::string QUIT_1 = "quit";
 	const std::string QUIT_2 = "q";
