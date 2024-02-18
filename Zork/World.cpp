@@ -53,31 +53,46 @@ bool World::handleOnlyCommand(const std::string& command)
 
 	if(command == nameCommand.NORTH_1 || command == nameCommand.NORTH_2)
 	{
-		player->Go(nameCommand.NORTH_1);
+		player->go(nameCommand.NORTH_1);
 	}
 	else if (command == nameCommand.SOUTH_1 || command == nameCommand.SOUTH_2)
 	{
-		player->Go(nameCommand.SOUTH_1);
+		player->go(nameCommand.SOUTH_1);
 	}
 	else if (command == nameCommand.EAST_1 || command == nameCommand.EAST_2)
 	{
-		player->Go(nameCommand.EAST_1);
+		player->go(nameCommand.EAST_1);
 	}
 	else if (command == nameCommand.WEST_1 || command == nameCommand.WEST_2)
 	{
-		player->Go(nameCommand.WEST_1);
+		player->go(nameCommand.WEST_1);
 	}
 	else if (command == nameCommand.UP_1 || command == nameCommand.UP_2)
 	{
-		player->Go(nameCommand.UP_1);
+		player->go(nameCommand.UP_1);
 	}
 	else if (command == nameCommand.DOWN_1 || command == nameCommand.DOWN_2)
 	{
-		player->Go(nameCommand.DOWN_1);
+		player->go(nameCommand.DOWN_1);
 	}
-	else {
+	else if (command == nameCommand.LOOK_1 || command == nameCommand.LOOK_2)
+	{
+		player->look();
+	}
+	else if (command == nameCommand.QUIT)
+	{
+		checkGameOver();
+	}
+	else
+	{
 		handleOK = false;
 	}
 
 	return handleOK;
+}
+
+void World::checkGameOver()
+{
+	isGameOver = true;
+	std::cout << "GAME OVER" << std::endl;
 }

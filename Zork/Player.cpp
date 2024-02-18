@@ -14,7 +14,7 @@ Player::~Player()
 {
 }
 
-bool Player::Go(const std::string& userCommand)
+bool Player::go(const std::string& userCommand)
 {
 	//get all exit entities from room parent
 	std::list<Entity*> exitList = static_cast<Room*>(parent)->findAll(EntityType::EXIT);
@@ -38,4 +38,9 @@ bool Player::Go(const std::string& userCommand)
 
 	return false;
 	
+}
+
+void Player::look()
+{
+	location->look();
 }

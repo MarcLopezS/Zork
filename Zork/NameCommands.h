@@ -14,6 +14,10 @@ struct NameCommands {
 	const std::string UP_2 = "u";
 	const std::string DOWN_1 = "down";
 	const std::string DOWN_2 = "d";
+	const std::string LOOK_1 = "look";
+	const std::string LOOK_2 = "l";
+	
+	const std::string QUIT = "quit";
 
 };
 

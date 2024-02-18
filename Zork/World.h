@@ -16,10 +16,12 @@ public:
 
 	bool parseUserCommand(std::vector<std::string>& arguments);
 	bool handleOnlyCommand(const std::string& command);
-
+	void checkGameOver();
 
 	std::vector<Entity*> entities;
+
 	bool isGameOver;
+	
 	NameCommands nameCommand;
 	Player* player;
 };

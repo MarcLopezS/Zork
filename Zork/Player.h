@@ -11,7 +11,8 @@ public:
 	Player(const std::string& namePlayer, const std::string descriptPlayer, Room* locationPlayer);
 	~Player();
 
-	bool Go(const std::string& userCommand);
+	bool go(const std::string& userCommand);
+	void look();
 
 	Room* location;
 };
