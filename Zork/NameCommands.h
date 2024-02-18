@@ -17,7 +17,8 @@ struct NameCommands {
 	const std::string LOOK_1 = "look";
 	const std::string LOOK_2 = "l";
 	
-	const std::string QUIT = "quit";
+	const std::string QUIT_1 = "quit";
+	const std::string QUIT_2 = "q";
 
 };
 

@@ -79,7 +79,7 @@ bool World::handleOnlyCommand(const std::string& command)
 	{
 		player->look();
 	}
-	else if (command == nameCommand.QUIT)
+	else if (command == nameCommand.QUIT_1 || command == nameCommand.QUIT_2)
 	{
 		checkGameOver();
 	}
