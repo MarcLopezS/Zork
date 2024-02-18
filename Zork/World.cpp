@@ -79,6 +79,10 @@ bool World::handleOnlyCommand(const std::string& command)
 	{
 		player->look();
 	}
+	else if (command == nameCommand.INVENTORY_1 || command == nameCommand.INVENTORY_2)
+	{
+		player->inventory();
+	}
 	else if (command == nameCommand.QUIT_1 || command == nameCommand.QUIT_2)
 	{
 		checkGameOver();

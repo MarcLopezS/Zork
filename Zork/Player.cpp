@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "Room.h"
 #include "Exit.h"
+#include "Item.h"
 
 
 Player::Player(const std::string& namePlayer, const std::string descriptPlayer, Room* locationPlayer)
@@ -43,4 +44,18 @@ bool Player::go(const std::string& userCommand)
 void Player::look()
 {
 	location->look();
+}
+
+void Player::inventory() const 
+{
+	std::cout << "Inventory:\n" << std::endl;
+
+	for (Entity* entity : containerEntities)
+	{
+		if (entity->type == EntityType::ITEM)
+		{
+			std::cout << static_cast<Item*>(entity)->name << std::endl;
+		}
+		
+	}
 }

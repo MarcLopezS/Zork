@@ -13,6 +13,7 @@ public:
 
 	bool go(const std::string& userCommand);
 	void look();
+	void inventory() const;
 
 	Room* location;
 };

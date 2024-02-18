@@ -16,6 +16,8 @@ struct NameCommands {
 	const std::string DOWN_2 = "d";
 	const std::string LOOK_1 = "look";
 	const std::string LOOK_2 = "l";
+	const std::string INVENTORY_1 = "inventory";
+	const std::string INVENTORY_2 = "i";
 	
 	const std::string QUIT_1 = "quit";
 	const std::string QUIT_2 = "q";
