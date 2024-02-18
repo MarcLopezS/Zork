@@ -20,7 +20,8 @@ public:
 	bool handleOnlyCommand(const std::string& command);
 	bool handleOneArgument(std::vector<std::string>& arguments);
 	void checkGameOver();
-	void printCurrentRoom();
+	void printCurrentRoom() const;
+	void checkFirstTimeRoom();
 
 	std::vector<Entity*> entities;
 

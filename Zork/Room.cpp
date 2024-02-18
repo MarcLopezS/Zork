@@ -5,6 +5,7 @@ Room::Room(const std::string& nameRoom, const std::string& descriptionRoom)
 	:Entity(nameRoom,descriptionRoom,nullptr)
 {
 	type = EntityType::ROOM;
+	firstTime = true;
 }
 
 Room::~Room()
@@ -32,5 +33,11 @@ void Room::look()
 			break;
 		}
 	}
+}
+
+void Room::seeFirstTime()
+{
+	if (firstTime)
+		firstTime = false;
 }
 

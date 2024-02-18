@@ -130,7 +130,19 @@ void World::checkGameOver()
 	std::cout << "GAME OVER" << std::endl;
 }
 
-void World::printCurrentRoom()
+void World::printCurrentRoom() const
 {
 	std::cout << player->location->name << std::endl;
+}
+
+void World::checkFirstTimeRoom()
+{
+	if (player->location->firstTime)
+	{
+		std::cout << "\n";
+		player->look();
+		std::cout << "\n";
+
+		player->location->seeFirstTime();
+	}
 }

@@ -12,6 +12,9 @@ public:
 	~Room();
 
 	void look() override;
+	void seeFirstTime();
+
+	bool firstTime;
 
 };
 
