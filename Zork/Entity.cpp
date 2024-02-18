@@ -27,11 +27,11 @@ std::list<Entity*> Entity::findAll(EntityType type)
 	return allEntityType;
 }
 
-Entity* Entity::findByNameAndType(const std::string& nameEntity, EntityType entityType)
+Entity* Entity::findByName(const std::string& nameEntity)
 {
 	for (Entity* entity : containerEntities)
 	{
-		if (toLowerCase(entity->name) == nameEntity && entity->type == entityType)
+		if (toLowerCase(entity->name) == nameEntity)
 			return entity;
 	}
 
@@ -48,4 +48,16 @@ void Entity::updateParent(Entity* destinyParent)
 	
 	if(parent != nullptr)
 		parent->containerEntities.push_back(this);
+}
+
+void Entity::printAllTypeEntitites(EntityType entityType)
+{
+	for (Entity* entity : containerEntities)
+	{
+		if (entity->type == entityType)
+		{
+			std::cout << entity->name << std::endl;
+		}
+
+	}
 }
