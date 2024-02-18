@@ -108,6 +108,45 @@ void Player::drop(const std::string& nameItem)
 		std::cout << "I don't have anything like that to drop it." << std::endl;
 }
 
+void Player::put(const std::vector<std::string>& argUser)
+{
+	std::list<Item*> itemsMentioned;
+	std::string itemToBePutted = argUser[1];
+	std::string itemDestiny = argUser[3];
+	bool isPutted = false;
+
+	for(Entity* item : containerEntities)
+	{
+		if (toLowerCase(item->name) == itemToBePutted || toLowerCase(item->name) == itemDestiny)
+			itemsMentioned.push_back(static_cast<Item*>(item));
+	}
+	
+	if (itemsMentioned.size() == 2)
+	{
+		if (itemsMentioned.front()->isItemAContainer && toLowerCase(itemsMentioned.front()->name) == itemDestiny)
+		{
+			itemsMentioned.back()->updateParent(itemsMentioned.front());
+			isPutted = true;
+		}
+		else if (itemsMentioned.back()->isItemAContainer && toLowerCase(itemsMentioned.back()->name) == itemDestiny)
+		{
+			itemsMentioned.front()->updateParent(itemsMentioned.back());
+			isPutted = true;
+		}
+		else
+		{
+			std::cout << "I cannot put " + itemToBePutted + " inside " + itemDestiny + "..." << std::endl;
+		}
+	}
+	else {
+		std::cout << "I cannot put anything or into anything that I don't have or see." << std::endl;
+	}
+
+	if (isPutted)
+		std::cout << "Putted inside " + itemDestiny + "." << std::endl;
+	
+}
+
 Item* Player::findContainerItem(const std::string& nameItem)
 {
 	Item* item;

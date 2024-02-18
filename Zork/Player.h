@@ -17,6 +17,7 @@ public:
 	void inventory() const;
 	void take(std::vector<std::string>& argUser);
 	void drop(const std::string& nameItem);
+	void put(const std::vector<std::string>& argUser);
 
 	Item* findContainerItem(const std::string& nameItem);
 

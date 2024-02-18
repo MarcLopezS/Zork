@@ -35,6 +35,7 @@ void World::setupGame()
 
 	entities.push_back(photo);
 	entities.push_back(bottle);
+	entities.push_back(backpack);
 
 	player = new Player("Marc", "The player of this game", bedroom);
 
@@ -53,6 +54,9 @@ bool World::parseUserCommand(std::vector<std::string>& arguments)
 		break;
 	case 2: //Command + 1 argument
 		isParseOK = handleOneArgument(arguments);
+		break;
+	case 4: 
+		isParseOK = handleThreeArguments(arguments);
 		break;
 	default:
 		isParseOK = false;
@@ -129,6 +133,23 @@ bool World::handleOneArgument(std::vector<std::string>& arguments)
 
 	return handleOK;
 }
+
+bool World::handleThreeArguments(std::vector<std::string>& arguments)
+{
+	bool handleOK = true;
+
+	if (arguments[0] == nameCommand.PUT && arguments[2] == nameCommand.IN)
+	{
+		player->put(arguments);
+	}
+	else
+	{
+		handleOK = false;
+	}
+
+	return handleOK;
+}
+
 void World::checkGameOver()
 {
 	isGameOver = true;
