@@ -3,12 +3,18 @@
 #include "Player.h"
 #include "Room.h"
 #include "Exit.h"
+#include "Item.h"
 
 
 World::World()
 {
 	isGameOver = false;
+	setupGame();
+	
+}
 
+void World::setupGame()
+{
 	Room* bedroom = new Room("Bedroom", "This is my bedroom.");
 	Room* livingRoom = new Room("Living Room", "This is my big living room.");
 	Room* bathroom = new Room("Bathroom", "This is my beloved bathroom.");
@@ -19,10 +25,15 @@ World::World()
 
 	Exit* exitBedroom = new Exit(nameCommand.SOUTH_1, "Bedroom door", "This door comunicates my bedroom with the living room.", bedroom, livingRoom);
 	Exit* exitBathroom = new Exit(nameCommand.WEST_1, "Bathroom door", "This door communicates my bedroom with the bathroom.", bedroom, bathroom);
-	
+
 	entities.push_back(exitBedroom);
 	entities.push_back(exitBathroom);
 
+	Item* photo = new Item("Photo", "This is a memory of my family going to the mountains.", bedroom, false);
+	Item* bottle = new Item("Bottle", "I use this bottle for drinking outside home.", livingRoom,false);
+
+	entities.push_back(photo);
+	entities.push_back(bottle);
 
 	player = new Player("Marc", "The player of this game", bedroom);
 
@@ -99,4 +110,9 @@ void World::checkGameOver()
 {
 	isGameOver = true;
 	std::cout << "GAME OVER" << std::endl;
+}
+
+void World::printCurrentRoom()
+{
+	std::cout << player->location->name << std::endl;
 }

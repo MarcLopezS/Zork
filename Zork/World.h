@@ -14,9 +14,12 @@ public:
 	
 	World();
 
+	void setupGame();
+	
 	bool parseUserCommand(std::vector<std::string>& arguments);
 	bool handleOnlyCommand(const std::string& command);
 	void checkGameOver();
+	void printCurrentRoom();
 
 	std::vector<Entity*> entities;
 

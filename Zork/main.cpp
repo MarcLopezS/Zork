@@ -17,6 +17,9 @@ int main()
 
     while (!world.isGameOver)
     {
+        std::cout << "\n--------------------------------------\n";
+        world.printCurrentRoom();
+        std::cout << "--------------------------------------\n";
         std::cout << ">> ";
 
         std::getline(std::cin, input);
