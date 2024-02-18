@@ -59,3 +59,23 @@ void Player::inventory() const
 		
 	}
 }
+
+Item* Player::findContainerItem(const std::string& nameItem)
+{
+	Item* item;
+
+	for (Entity* entity : containerEntities)
+	{
+		if (entity->type == EntityType::ITEM)
+		{
+			item = static_cast<Item*>(entity);
+
+			if (item->name == nameItem && item->isItemAContainer)
+			{
+				return item;
+			}
+		}
+	}
+
+	return nullptr;
+}

@@ -3,6 +3,7 @@
 
 #include "Creature.h"
 
+class Item;
 
 class Player : public Creature
 {
@@ -14,6 +15,8 @@ public:
 	bool go(const std::string& userCommand);
 	void look();
 	void inventory() const;
+
+	Item* findContainerItem(const std::string& nameItem);
 
 	Room* location;
 };
