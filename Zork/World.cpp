@@ -126,6 +126,10 @@ bool World::handleOneArgument(std::vector<std::string>& arguments)
 	{
 		player->drop(arguments[1]);
 	}
+	else if (arguments[0] == nameCommand.OPEN)
+	{
+		player->open(arguments[1]);
+	}
 	else
 	{
 		handleOK = false;

@@ -47,18 +47,11 @@ void Player::look()
 	location->look();
 }
 
-void Player::inventory() const 
+void Player::inventory() 
 {
 	std::cout << "Inventory:\n" << std::endl;
 
-	for (Entity* entity : containerEntities)
-	{
-		if (entity->type == EntityType::ITEM)
-		{
-			std::cout << static_cast<Item*>(entity)->name << std::endl;
-		}
-		
-	}
+	printAllEntitites(EntityType::ITEM);
 }
 
 void Player::take(std::vector<std::string>& argsUser)
@@ -145,6 +138,31 @@ void Player::put(const std::vector<std::string>& argUser)
 	if (isPutted)
 		std::cout << "Putted inside " + itemDestiny + "." << std::endl;
 	
+}
+
+////PENDING CASE TO OPEN DOOR WITH KEY AND WITHOUT KEY (REQUIRED TWO ARGUMENTS)
+void Player::open(const std::string& nameEntityToOpen)
+{
+	Entity* entityDestiny = findByName(nameEntityToOpen);
+
+	if (entityDestiny == nullptr)
+		entityDestiny = location->findByName(nameEntityToOpen);
+
+	if (entityDestiny != nullptr)
+	{
+		if (entityDestiny->type == EntityType::ITEM && static_cast<Item*>(entityDestiny)->isItemAContainer)
+		{
+			std::cout << entityDestiny->name + ":\n" << std::endl;
+			entityDestiny->printAllEntitites(EntityType::ITEM);
+		}
+		else {
+			std::cout << "Are you serious? You can't open a " + entityDestiny->name + "!" << std::endl;
+		}
+	}
+	else
+	{
+		std::cout << "There is nothing to open with that name" << std::endl;
+	}
 }
 
 Item* Player::findContainerItem(const std::string& nameItem)

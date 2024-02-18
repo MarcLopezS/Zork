@@ -14,10 +14,11 @@ public:
 
 	bool go(const std::string& userCommand);
 	void look();
-	void inventory() const;
+	void inventory();
 	void take(std::vector<std::string>& argUser);
 	void drop(const std::string& nameItem);
 	void put(const std::vector<std::string>& argUser);
+	void open(const std::string& nameEntityToOpen);
 
 	Item* findContainerItem(const std::string& nameItem);
 

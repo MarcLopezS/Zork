@@ -50,7 +50,7 @@ void Entity::updateParent(Entity* destinyParent)
 		parent->containerEntities.push_back(this);
 }
 
-void Entity::printAllTypeEntitites(EntityType entityType)
+void Entity::printAllEntitites(EntityType entityType)
 {
 	for (Entity* entity : containerEntities)
 	{
@@ -58,6 +58,5 @@ void Entity::printAllTypeEntitites(EntityType entityType)
 		{
 			std::cout << entity->name << std::endl;
 		}
-
 	}
 }

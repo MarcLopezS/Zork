@@ -23,6 +23,7 @@ struct NameCommands {
 	const std::string DROP = "drop";
 	const std::string PUT = "put";
 	const std::string IN = "in";
+	const std::string OPEN = "open";
 
 	const std::string QUIT_1 = "quit";
 	const std::string QUIT_2 = "q";
