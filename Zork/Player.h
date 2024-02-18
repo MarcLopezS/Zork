@@ -15,6 +15,7 @@ public:
 	bool go(const std::string& userCommand);
 	void look();
 	void inventory() const;
+	void take(std::vector<std::string>& argUser);
 
 	Item* findContainerItem(const std::string& nameItem);
 

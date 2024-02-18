@@ -50,6 +50,9 @@ bool World::parseUserCommand(std::vector<std::string>& arguments)
 	case 1: //Only Command (0 arguments)
 		isParseOK = handleOnlyCommand(command);
 		break;
+	case 2: //Command + 1 argument
+		isParseOK = handleOneArgument(arguments);
+		break;
 	default:
 		isParseOK = false;
 		break;
@@ -106,6 +109,21 @@ bool World::handleOnlyCommand(const std::string& command)
 	return handleOK;
 }
 
+bool World::handleOneArgument(std::vector<std::string>& arguments)
+{
+	bool handleOK = true;
+
+	if (arguments[0] == nameCommand.TAKE)
+	{
+		player->take(arguments);
+	}
+	else
+	{
+		handleOK = false;
+	}
+
+	return handleOK;
+}
 void World::checkGameOver()
 {
 	isGameOver = true;

@@ -2,6 +2,7 @@
 #include "Room.h"
 #include "Exit.h"
 #include "Item.h"
+#include "Global.h"
 
 
 Player::Player(const std::string& namePlayer, const std::string descriptPlayer, Room* locationPlayer)
@@ -58,6 +59,34 @@ void Player::inventory() const
 		}
 		
 	}
+}
+
+void Player::take(std::vector<std::string>& argsUser)
+{
+	bool isTaken = false;
+
+	//one argument
+	if (argsUser.size() == 2)
+	{
+		for (Entity* entityContRoom : location->containerEntities)
+		{
+			if (toLowerCase(entityContRoom->name) == argsUser[1])
+			{
+				entityContRoom->updateParent(this);
+				std::cout << "Taken." << std::endl;
+				isTaken = true;
+				break;
+			}
+		}
+	}
+	else { //three arguments
+		//TODO: implement TAKE ... FROM ...
+	}
+	
+
+	if (!isTaken)
+		std::cout << "There is nothing in here with that name." << std::endl;
+
 }
 
 Item* Player::findContainerItem(const std::string& nameItem)

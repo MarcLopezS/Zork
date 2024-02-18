@@ -18,6 +18,7 @@ public:
 	
 	bool parseUserCommand(std::vector<std::string>& arguments);
 	bool handleOnlyCommand(const std::string& command);
+	bool handleOneArgument(std::vector<std::string>& arguments);
 	void checkGameOver();
 	void printCurrentRoom();
 
