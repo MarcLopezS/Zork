@@ -24,6 +24,7 @@ public:
 	virtual void look();
 
 	std::list<Entity*> findAll(EntityType type);
+	Entity* findByNameAndType(const std::string& nameEntity, EntityType entityType);
 	void updateParent(Entity* destinyParent);
 
 	std::string name;

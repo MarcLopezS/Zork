@@ -1,4 +1,5 @@
 #include "Entity.h"
+#include "Global.h"
 
 Entity::Entity(const std::string& nameEntity, const std::string& descriptionEntity, Entity* parentEntity)
 	:name(nameEntity), description(descriptionEntity), parent(parentEntity)
@@ -25,6 +26,18 @@ std::list<Entity*> Entity::findAll(EntityType type)
 	
 	return allEntityType;
 }
+
+Entity* Entity::findByNameAndType(const std::string& nameEntity, EntityType entityType)
+{
+	for (Entity* entity : containerEntities)
+	{
+		if (toLowerCase(entity->name) == nameEntity && entity->type == entityType)
+			return entity;
+	}
+
+	return nullptr;
+}
+
 
 void Entity::updateParent(Entity* destinyParent)
 {
