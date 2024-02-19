@@ -146,6 +146,10 @@ bool World::handleThreeArguments(std::vector<std::string>& arguments)
 	{
 		player->put(arguments);
 	}
+	else if (arguments[0] == nameCommand.TAKE && arguments[2] == nameCommand.FROM)
+	{
+		player->take(arguments);
+	}
 	else
 	{
 		handleOK = false;

@@ -70,51 +70,53 @@ void Player::take(const std::string& nameItem)
 }
 
 //Three arguments
-void Player::take(const std::vector<std::string>& argsUser)
+void Player::take(const std::vector<std::string>& argUser)
 {
-	//TODO: WITH 3 ARGUMENTS
-
-	/*bool isTaken = false;
-	Entity* entityToTake;
-
-	entityToTake = location->findByName(argsUser[1]);
-		
-	if (entityToTake != nullptr && entityToTake->type == EntityType::ITEM)
+	if (argUser[1] == argUser[3])
 	{
-		entityToTake->updateParent(this);
-		isTaken = true;
-		std::cout << "Taken." << std::endl;
-	}
-	else {
-		std::cout << "There is no item in here with that name." << std::endl;
+		std::cout << "Are you serious?..." << std::endl;
 		return;
 	}
-	
-	if(argsUser.size() == 4) { 
-		
-		Entity* itemContainer = findByName(argsUser[3]);
-		
+
+	std::string nameItemContainer = argUser[3];
+	Entity* itemContainer = findByName(nameItemContainer);
+
+	if (itemContainer == nullptr)
+	{ //search container in player's location
+
+		itemContainer = location->findByName(nameItemContainer);
+
 		if (itemContainer == nullptr)
-		{ //search container in player's location
-
-			itemContainer = location->findByName(argsUser[3]);
-
-			if (itemContainer == nullptr)
-			{
-				std::cout << "I don't find any container with that name." << std::endl;
-				return;
-			}
-			else if (itemContainer->type != EntityType::ITEM)
-			{
-				std::cout << itemContainer->name + " is not a container..." << std::endl;
-				return;
-			}
+		{
+			std::cout << "I don't find any container with that name." << std::endl;
+			return;
 		}
-	}*/
+		else if (itemContainer->type != EntityType::ITEM)
+		{
+			std::cout << itemContainer->name + " is not a container..." << std::endl;
+			return;
+		}
+	}
+	
+	if (!(static_cast<Item*>(itemContainer)->isItemAContainer))
+	{
+		std::cout << itemContainer->name + " is not a container..." << std::endl;
+		return;
+	}
+
+	std::string nameItemToTake = argUser[1];
+	Item* itemToBeTaken = static_cast<Item*>(itemContainer->findByName(nameItemToTake));
+
+	if (itemToBeTaken == nullptr)
+	{
+		std::cout << "There is no item called like that in this container." << std::endl;
+		return;
+	}
+	else {
+		itemToBeTaken->updateParent(this);
+		std::cout << "Taken." << std::endl;
+	}
 }
-
-
-
 
 void Player::drop(const std::string& nameItem)
 {
@@ -133,8 +135,6 @@ void Player::drop(const std::string& nameItem)
 
 void Player::put(const std::vector<std::string>& argUser)
 {
-	bool isPutted = false;
-
 	if (argUser[1] == argUser[3])
 	{
 		std::cout << "Are you serious?..." << std::endl;
