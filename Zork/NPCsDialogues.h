@@ -5,21 +5,17 @@
 #include <string>
 
 #include "Global.h"
-
-class NPC;
+#include "NPC.h"
 
 class NPCsDialogues
 {
 public:
 
-	NPCsDialogues(NPC* motherNPC, NPC* brotherNPC, NPC* strangerNPC);
+	NPCsDialogues();
 	~NPCsDialogues();
 
-	void readJSONDialogues();
-
-	NPC* mother;
-	NPC* brother;
-	NPC* stranger;
+	void dialogueController(NPCType npcType, int stateDialog);
+	void momController(int stateDialog);
 	
 	std::map<std::string, std::string> allDialogues;
 };

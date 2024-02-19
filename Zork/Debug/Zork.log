@@ -1,4 +1,5 @@
-﻿  Global.cpp
-  main.cpp
+﻿  NPC.cpp
+C:\Users\GAMER\Desktop\Proyecto juego plataformas\Zork\Zork\NPC.cpp(18,2): error C2064: term does not evaluate to a function taking 2 arguments
+  NPCsDialogues.cpp
+  World.cpp
   Generating Code...
-  Zork.vcxproj -> C:\Users\GAMER\Desktop\Proyecto juego plataformas\Zork\Zork\Debug\Zork.exe

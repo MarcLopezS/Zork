@@ -1,21 +1,39 @@
 #include "NPCsDialogues.h"
-#include "NPC.h"
 
-NPCsDialogues::NPCsDialogues(NPC* motherNPC, NPC* brotherNPC, NPC* strangerNPC)
+
+NPCsDialogues::NPCsDialogues()
 {
-	mother = motherNPC;
-	brother = brotherNPC;
-	stranger = strangerNPC;
-
-	readJSONDialogues();
+	allDialogues = readJson();
 }
 
 NPCsDialogues::~NPCsDialogues()
 {
 }
 
-void NPCsDialogues::readJSONDialogues()
+
+void NPCsDialogues::dialogueController(NPCType npcType, int stateDialog)
 {
-	allDialogues = readJson();
+	switch (npcType)
+	{
+	case NPCType::MOM:
+		momController(stateDialog);
+		break;
+	case NPCType::BROTHER:
+		break;
+	case NPCType::STRANGER:
+		break;
+	default:
+		break;
+	}
+}
+
+void NPCsDialogues::momController(int stateDialog)
+{
+	std::string keyDialog = "Mom_D" + stateDialog;
+	
+	if (stateDialog == 1)
+	{
+		std::cout << "Mom: " + allDialogues[keyDialog] << std::endl;
+	}
 }
 

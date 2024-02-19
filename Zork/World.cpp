@@ -66,16 +66,18 @@ void World::setupGame()
 
 	entities.push_back(player);
 
-	NPC* mother = new NPC("Mom", "There is my mother, lying on the sofa.", livingRoom,NPCType::MOM);
-	NPC* brother = new NPC("Matias", "There is my annoying brother, still sleeping...", brother_bedroom, NPCType::BROTHER);
-	NPC* stranger = new NPC("Stranger", "There is someone tied at the corner of the bed. One of Mom's adventures? Disgusting ...", mother_bedroom, NPCType::STRANGER);
+	NPCsDialogues* allDialoguesNPCs = new NPCsDialogues(); //REMINDER: free up memory in destructor
+	allDialogues = allDialoguesNPCs;
+
+	NPC* mother = new NPC("Mom", "There is my mother, lying on the sofa.", livingRoom,NPCType::MOM, allDialoguesNPCs);
+	NPC* brother = new NPC("Matias", "There is my annoying brother, still sleeping...", brother_bedroom, NPCType::BROTHER, allDialoguesNPCs);
+	NPC* stranger = new NPC("Stranger", "There is someone tied at the corner of the bed. One of Mom's adventures? Disgusting ...", mother_bedroom, NPCType::STRANGER, allDialoguesNPCs);
 	
 	entities.push_back(mother);
 	entities.push_back(brother);
 	entities.push_back(stranger);
 
-	NPCsDialogues* allDialoguesNPCs = new NPCsDialogues(mother, brother, stranger); //REMINDER: free up memory in destructor
-	allDialogues = allDialoguesNPCs;
+	
 }
 
 bool World::parseUserCommand(std::vector<std::string>& arguments)
