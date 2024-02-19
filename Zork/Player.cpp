@@ -182,7 +182,7 @@ void Player::put(const std::vector<std::string>& argUser)
 
 }
 
-////PENDING CASE TO OPEN DOOR WITH KEY AND WITHOUT KEY (REQUIRED TWO ARGUMENTS)
+//One argument (containers)
 void Player::open(const std::string& nameEntityToOpen)
 {
 	Entity* entityDestiny = findByName(nameEntityToOpen);
@@ -205,6 +205,54 @@ void Player::open(const std::string& nameEntityToOpen)
 	{
 		std::cout << "There is nothing to open with that name" << std::endl;
 	}
+}
+
+//Two Arguments (unlock exits)
+void Player::open(const std::vector<std::string>& argUser)
+{
+	Item* item;
+	
+	std::string nameExit = argUser[1] + " " + argUser[2];
+	Exit* lockedExit = static_cast<Exit*>(location->findByName(nameExit));
+
+	if (lockedExit == nullptr)
+	{
+		std::cout << "There is no door in here with that name." << std::endl;
+		return;
+	}
+	else if (lockedExit->isLocked == false)
+	{
+		std::cout << "The door is already opened..." << std::endl;
+		return;
+	}
+
+	for (Entity* entity : containerEntities)
+	{
+		item = static_cast<Item*>(entity);
+
+		if (item->isItemAContainer)
+		{
+			for (Entity* itemInContainer : item->containerEntities)
+			{
+				if (static_cast<Item*>(itemInContainer)->exitToUnlock == lockedExit)
+				{
+					item = static_cast<Item*>(itemInContainer);
+					break;
+				}
+			}
+		}
+
+		if (item->exitToUnlock == lockedExit)
+		{
+			lockedExit->lockUnlock();
+			std::cout << "You opened " + lockedExit->name + " with " + item->name + "." << std::endl;
+			return;
+		}
+		
+	}
+
+	std::cout << "You don't have the key to open this door." << std::endl;
+
 }
 
 Item* Player::findContainerItem(const std::string& nameItem)

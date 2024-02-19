@@ -60,3 +60,11 @@ Room* Exit::getRoomDestination(Room* room)
 
 	return nullptr; //if not found
 }
+
+void Exit::lockUnlock()
+{
+	if (isLocked)
+		isLocked = false;
+	else
+		isLocked = true;
+}

@@ -20,6 +20,7 @@ public:
 	void drop(const std::string& nameItem);
 	void put(const std::vector<std::string>& argUser);
 	void open(const std::string& nameEntityToOpen);
+	void open(const std::vector<std::string>& argUser);
 
 	Item* findContainerItem(const std::string& nameItem);
 

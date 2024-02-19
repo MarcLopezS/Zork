@@ -16,6 +16,8 @@ public:
 	std::string dirExitRoom(Room* room);
 	Room* getRoomDestination(Room* room);
 
+	void lockUnlock();
+
 	std::string dirSource;
 	std::string dirDestination;
 

@@ -23,7 +23,7 @@ void World::setupGame()
 	entities.push_back(livingRoom);
 	entities.push_back(bathroom);
 
-	Exit* exitBedroom = new Exit(nameCommand.SOUTH_1, "Bedroom door", "This door comunicates my bedroom with the living room.", bedroom, livingRoom);
+	Exit* exitBedroom = new Exit(nameCommand.SOUTH_1, "Bedroom door", "This door comunicates my bedroom with the living room.", bedroom, livingRoom,true);
 	Exit* exitBathroom = new Exit(nameCommand.WEST_1, "Bathroom door", "This door communicates my bedroom with the bathroom.", bedroom, bathroom);
 
 	entities.push_back(exitBedroom);
@@ -32,10 +32,12 @@ void World::setupGame()
 	Item* photo = new Item("Photo", "This is a memory of my family going to the mountains.", bedroom, false);
 	Item* bottle = new Item("Bottle", "I use this bottle for drinking outside home.", livingRoom,false);
 	Item* backpack = new Item("Backpack", "My favourite backpack. It's a little worn.", bedroom, true);
+	Item* keyBedroom = new Item("KeyBed", "This is the key to open and close my bedroom", bedroom, false, exitBedroom);
 
 	entities.push_back(photo);
 	entities.push_back(bottle);
 	entities.push_back(backpack);
+	entities.push_back(keyBedroom);
 
 	player = new Player("Marc", "The player of this game", bedroom);
 
@@ -49,11 +51,14 @@ bool World::parseUserCommand(std::vector<std::string>& arguments)
 
 	switch (arguments.size())
 	{
-	case 1: //Only Command (0 arguments)
+	case 1: 
 		isParseOK = handleOnlyCommand(command);
 		break;
-	case 2: //Command + 1 argument
+	case 2: 
 		isParseOK = handleOneArgument(arguments);
+		break;
+	case 3:
+		isParseOK = handleTwoArguments(arguments);
 		break;
 	case 4: 
 		isParseOK = handleThreeArguments(arguments);
@@ -137,6 +142,22 @@ bool World::handleOneArgument(std::vector<std::string>& arguments)
 
 	return handleOK;
 }
+
+bool World::handleTwoArguments(std::vector<std::string>& arguments)
+{
+	bool handleOK = true;
+	
+	if (arguments[0] == nameCommand.OPEN)
+	{
+		player->open(arguments);
+	}
+	else {
+		handleOK = false;
+	}
+
+	return handleOK;
+}
+
 
 bool World::handleThreeArguments(std::vector<std::string>& arguments)
 {
