@@ -25,6 +25,7 @@ public:
 
 	std::list<Entity*> findAll(EntityType type);
 	Entity* findByName(const std::string& nameEntity);
+	Entity* findByType(EntityType entityType);
 	void updateParent(Entity* destinyParent);
 	void printAllEntitites(EntityType entityType);
 

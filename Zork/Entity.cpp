@@ -38,6 +38,17 @@ Entity* Entity::findByName(const std::string& nameEntity)
 	return nullptr;
 }
 
+Entity* Entity::findByType(EntityType entityType)
+{
+	for (Entity* entity : containerEntities)
+	{
+		if (entity->type == entityType)
+			return entity;
+	}
+
+	return nullptr;
+}
+
 
 void Entity::updateParent(Entity* destinyParent)
 {
