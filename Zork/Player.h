@@ -15,7 +15,8 @@ public:
 	bool go(const std::string& userCommand);
 	void look();
 	void inventory();
-	void take(std::vector<std::string>& argUser);
+	void take(const std::string& nameItem);
+	void take(const std::vector<std::string>& argUser);
 	void drop(const std::string& nameItem);
 	void put(const std::vector<std::string>& argUser);
 	void open(const std::string& nameEntityToOpen);

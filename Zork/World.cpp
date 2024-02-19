@@ -120,7 +120,7 @@ bool World::handleOneArgument(std::vector<std::string>& arguments)
 
 	if (arguments[0] == nameCommand.TAKE)
 	{
-		player->take(arguments);
+		player->take(arguments[1]);
 	}
 	else if (arguments[0] == nameCommand.DROP)
 	{

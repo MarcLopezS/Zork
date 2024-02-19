@@ -54,32 +54,66 @@ void Player::inventory()
 	printAllEntitites(EntityType::ITEM);
 }
 
-void Player::take(std::vector<std::string>& argsUser)
+//One argument
+void Player::take(const std::string& nameItem)
 {
-	bool isTaken = false;
-	Entity* entity;
+	Entity* entityToTake = location->findByName(nameItem);
 
-	//one argument
-	if (argsUser.size() == 2)
+	if (entityToTake != nullptr && entityToTake->type == EntityType::ITEM)
 	{
-		entity = location->findByName(argsUser[1]);
-		
-		if (entity != nullptr && entity->type == EntityType::ITEM)
-		{
-			entity->updateParent(this);
-			std::cout << "Taken." << std::endl;
-			isTaken = true;
-		}
-
+		entityToTake->updateParent(this);
+		std::cout << "Taken." << std::endl;
 	}
-	else { //three arguments
-		//TODO: implement TAKE ... FROM ...
+	else {
+		std::cout << "There is no item in here with that name." << std::endl;
 	}
-
-	if (!isTaken)
-		std::cout << "There is nothing in here with that name." << std::endl;
-
 }
+
+//Three arguments
+void Player::take(const std::vector<std::string>& argsUser)
+{
+	//TODO: WITH 3 ARGUMENTS
+
+	/*bool isTaken = false;
+	Entity* entityToTake;
+
+	entityToTake = location->findByName(argsUser[1]);
+		
+	if (entityToTake != nullptr && entityToTake->type == EntityType::ITEM)
+	{
+		entityToTake->updateParent(this);
+		isTaken = true;
+		std::cout << "Taken." << std::endl;
+	}
+	else {
+		std::cout << "There is no item in here with that name." << std::endl;
+		return;
+	}
+	
+	if(argsUser.size() == 4) { 
+		
+		Entity* itemContainer = findByName(argsUser[3]);
+		
+		if (itemContainer == nullptr)
+		{ //search container in player's location
+
+			itemContainer = location->findByName(argsUser[3]);
+
+			if (itemContainer == nullptr)
+			{
+				std::cout << "I don't find any container with that name." << std::endl;
+				return;
+			}
+			else if (itemContainer->type != EntityType::ITEM)
+			{
+				std::cout << itemContainer->name + " is not a container..." << std::endl;
+				return;
+			}
+		}
+	}*/
+}
+
+
 
 
 void Player::drop(const std::string& nameItem)
