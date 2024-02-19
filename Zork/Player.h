@@ -12,7 +12,7 @@ public:
 	Player(const std::string& namePlayer, const std::string descriptPlayer, Room* locationPlayer);
 	~Player();
 
-	bool go(const std::string& userCommand);
+	void go(const std::string& userCommand);
 	void look();
 	void inventory();
 	void take(const std::string& nameItem);

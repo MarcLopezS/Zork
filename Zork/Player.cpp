@@ -16,7 +16,7 @@ Player::~Player()
 {
 }
 
-bool Player::go(const std::string& userCommand)
+void Player::go(const std::string& userCommand)
 {
 	//get all exit entities from room parent
 	std::list<Entity*> exitList = static_cast<Room*>(parent)->findAll(EntityType::EXIT);
@@ -29,16 +29,22 @@ bool Player::go(const std::string& userCommand)
 
 		if (ex->dirExitRoom(location) == userCommand)
 		{
-			updateParent(ex->getRoomDestination(location));
-			location = static_cast<Room*>(parent);
-			std::cout << "I passed the " + ex->name + " and arrived to " + parent->name + "." << std::endl;
-			return true;
+			if (ex->isLocked == false)
+			{
+				updateParent(ex->getRoomDestination(location));
+				location = static_cast<Room*>(parent);
+				std::cout << "I passed the " + ex->name + " and arrived to " + parent->name + "." << std::endl;
+				return;
+			}
+			else {
+				std::cout << "The door is locked." << std::endl;
+				return;
+			}
+			
 		}
 	}
 
 	std::cout << "There is no door in that direction..." << std::endl;
-
-	return false;
 	
 }
 
