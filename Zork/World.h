@@ -7,6 +7,7 @@
 #include "NameCommands.h"
 
 class Player;
+class NPCsDialogues;
 
 class World
 {
@@ -31,6 +32,7 @@ public:
 	
 	NameCommands nameCommand;
 	Player* player;
+	NPCsDialogues* allDialogues;
 };
 
 #endif //World_h
