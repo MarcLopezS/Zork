@@ -45,6 +45,9 @@
     <ClCompile Include="Global.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="NPCsDialogues.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="World.h">
@@ -77,5 +80,14 @@
     <ClInclude Include="NameCommands.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="NPCsDialogues.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="json.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="TextDialogues.json" />
   </ItemGroup>
 </Project>

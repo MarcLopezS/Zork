@@ -12,3 +12,6 @@ Creature::~Creature()
 {
 }
 
+void Creature::talk()
+{
+}

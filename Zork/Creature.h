@@ -13,6 +13,8 @@ public:
 
 	Creature(const std::string& nameCreature, const std::string& descriptCreature, Room* location);
 	~Creature();
+
+	virtual void talk();
 	
 };
 

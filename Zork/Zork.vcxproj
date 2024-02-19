@@ -145,6 +145,7 @@
     <ClCompile Include="Global.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="NPC.cpp" />
+    <ClCompile Include="NPCsDialogues.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Room.cpp" />
     <ClCompile Include="World.cpp" />
@@ -156,11 +157,16 @@
     <ClInclude Include="Exit.h" />
     <ClInclude Include="Global.h" />
     <ClInclude Include="Item.h" />
+    <ClInclude Include="json.hpp" />
     <ClInclude Include="NameCommands.h" />
     <ClInclude Include="NPC.h" />
+    <ClInclude Include="NPCsDialogues.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Room.h" />
     <ClInclude Include="World.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="TextDialogues.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
