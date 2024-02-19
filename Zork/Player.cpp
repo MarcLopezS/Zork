@@ -3,6 +3,7 @@
 #include "Exit.h"
 #include "Item.h"
 #include "Global.h"
+#include "NPC.h"
 
 
 Player::Player(const std::string& namePlayer, const std::string descriptPlayer, Room* locationPlayer)
@@ -259,6 +260,20 @@ void Player::open(const std::vector<std::string>& argUser)
 
 	std::cout << "You don't have the key to open this door." << std::endl;
 
+}
+
+void Player::talk()
+{
+	NPC* npc = static_cast<NPC*>(location->findByType(EntityType::NPC));
+
+	if (npc != nullptr)
+	{
+		npc->talk();
+	}
+	else 
+	{
+		std::cout << "There is no one here to talk..." << std::endl;
+	}
 }
 
 Item* Player::findContainerItem(const std::string& nameItem)

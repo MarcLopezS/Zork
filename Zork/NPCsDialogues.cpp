@@ -29,7 +29,7 @@ void NPCsDialogues::dialogueController(NPCType npcType, int stateDialog)
 
 void NPCsDialogues::momController(int stateDialog)
 {
-	std::string keyDialog = "Mom_D" + stateDialog;
+	std::string keyDialog = "Mom_D" + std::to_string(stateDialog);
 	
 	if (stateDialog == 1)
 	{

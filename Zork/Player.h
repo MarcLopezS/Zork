@@ -3,6 +3,7 @@
 
 #include "Creature.h"
 
+
 class Item;
 
 class Player : public Creature
@@ -21,6 +22,7 @@ public:
 	void put(const std::vector<std::string>& argUser);
 	void open(const std::string& nameEntityToOpen);
 	void open(const std::vector<std::string>& argUser);
+	void talk();
 
 	Item* findContainerItem(const std::string& nameItem);
 

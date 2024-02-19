@@ -35,7 +35,7 @@ void World::setupGame()
 	entities.push_back(kitchen);
 
 
-	Exit* exitBedroom = new Exit(nameCommand.SOUTH_1, "Bedroom door", "This door comunicates my bedroom with the living room.", bedroom, livingRoom,true);
+	Exit* exitBedroom = new Exit(nameCommand.SOUTH_1, "Bedroom door", "This door comunicates my bedroom with the living room.", bedroom, livingRoom);
 	Exit* exitBathroom = new Exit(nameCommand.NORTH_1, "Bathroom door", "This door communicates the hallway with the bathroom.", hallway, bathroom);
 	Exit* exitMatiasBedroom = new Exit(nameCommand.WEST_1, "Matias bedroom", "This door communicates my bedroom with the bathroom.", hallway, brother_bedroom);
 	Exit* exitHallway = new Exit(nameCommand.EAST_1, "Hallway door", "This door communicates my the living room with the hallway.", hallway, livingRoom);
@@ -55,12 +55,12 @@ void World::setupGame()
 	Item* photo = new Item("Photo", "This is a memory of my family going to the mountains.", bedroom, false);
 	Item* bottle = new Item("Bottle", "I use this bottle for drinking outside home.", livingRoom,false);
 	Item* backpack = new Item("Backpack", "My favourite backpack. It's a little worn.", bedroom, true);
-	Item* keyBedroom = new Item("KeyBed", "This is the key to open and close my bedroom", bedroom, false, exitBedroom);
+	//Item* keyBedroom = new Item("KeyBed", "This is the key to open and close my bedroom", bedroom, false, exitBedroom);
 
 	entities.push_back(photo);
 	entities.push_back(bottle);
 	entities.push_back(backpack);
-	entities.push_back(keyBedroom);
+	//entities.push_back(keyBedroom);
 
 	player = new Player("Marc", "The player of this game", bedroom);
 
@@ -77,7 +77,6 @@ void World::setupGame()
 	entities.push_back(brother);
 	entities.push_back(stranger);
 
-	
 }
 
 bool World::parseUserCommand(std::vector<std::string>& arguments)
@@ -142,6 +141,10 @@ bool World::handleOnlyCommand(const std::string& command)
 	else if (command == nameCommand.INVENTORY_1 || command == nameCommand.INVENTORY_2)
 	{
 		player->inventory();
+	}
+	else if (command == nameCommand.TALK)
+	{
+		player->talk();
 	}
 	else if (command == nameCommand.QUIT_1 || command == nameCommand.QUIT_2)
 	{

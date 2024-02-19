@@ -4,8 +4,9 @@
 NPC::NPC(const std::string& nameNPC, const std::string& descriptionNPC,Room* locationNPC, NPCType typeNPCCreature, NPCsDialogues* dialogContr)
 	:Creature(nameNPC,descriptionNPC,locationNPC)
 {
+	type = EntityType::NPC;
 	typeNPC = typeNPCCreature;
-	stateDialog = 0;
+	stateDialog = 1;
 	controllerNPCDialogue = dialogContr;
 }
 
