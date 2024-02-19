@@ -95,23 +95,58 @@ void Player::drop(const std::string& nameItem)
 	{
 		std::cout << "I don't have anything like that to drop it." << std::endl;
 	}
-
 }
 
 void Player::put(const std::vector<std::string>& argUser)
 {
 	std::list<Item*> itemsMentioned;
+
 	std::string itemToBePutted = argUser[1];
 	std::string itemDestiny = argUser[3];
 	bool isPutted = false;
+	bool bothItems = false;
 
-	for(Entity* item : containerEntities)
+	Entity* item = findByName(itemToBePutted);
+	
+	if (argUser[1] == argUser[3])
 	{
-		if (toLowerCase(item->name) == itemToBePutted || toLowerCase(item->name) == itemDestiny)
-			itemsMentioned.push_back(static_cast<Item*>(item));
+		std::cout << "Are you serious?..." << std::endl;
+		return;
+	}
+
+	if (item != nullptr)
+	{
+		itemsMentioned.push_back(static_cast<Item*>(item));
+	}
+	else {
+		std::cout << "I don't have an item called like that." << std::endl;
+		return;
 	}
 	
-	if (itemsMentioned.size() == 2)
+	item = findByName(itemDestiny);
+
+	if (item != nullptr)
+	{
+		itemsMentioned.push_back(static_cast<Item*>(item));
+	}
+	else { //search container in room
+		item = location->findByName(itemDestiny);
+
+		if (item != nullptr)
+		{
+			itemsMentioned.push_back(static_cast<Item*>(item));
+		}
+		else
+		{
+			std::cout << "I don't find any container with that name." << std::endl;
+			return;
+		}
+	}
+
+	bothItems = itemsMentioned.front()->type == EntityType::ITEM ? true : false;
+	bothItems = itemsMentioned.back()->type == EntityType::ITEM ? true : false;
+
+	if (bothItems)
 	{
 		if (itemsMentioned.front()->isItemAContainer && toLowerCase(itemsMentioned.front()->name) == itemDestiny)
 		{
@@ -129,7 +164,7 @@ void Player::put(const std::vector<std::string>& argUser)
 		}
 	}
 	else {
-		std::cout << "I cannot put anything or into anything that I don't have or see." << std::endl;
+		std::cout << "I can't do that." << std::endl;
 	}
 
 	if (isPutted)
