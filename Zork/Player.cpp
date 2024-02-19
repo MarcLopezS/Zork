@@ -57,20 +57,20 @@ void Player::inventory()
 void Player::take(std::vector<std::string>& argsUser)
 {
 	bool isTaken = false;
+	Entity* entity;
 
 	//one argument
 	if (argsUser.size() == 2)
 	{
-		for (Entity* entityContRoom : location->containerEntities)
+		entity = location->findByName(argsUser[1]);
+		
+		if (entity != nullptr && entity->type == EntityType::ITEM)
 		{
-			if (toLowerCase(entityContRoom->name) == argsUser[1])
-			{
-				entityContRoom->updateParent(this);
-				std::cout << "Taken." << std::endl;
-				isTaken = true;
-				break;
-			}
+			entity->updateParent(this);
+			std::cout << "Taken." << std::endl;
+			isTaken = true;
 		}
+
 	}
 	else { //three arguments
 		//TODO: implement TAKE ... FROM ...
@@ -84,21 +84,18 @@ void Player::take(std::vector<std::string>& argsUser)
 
 void Player::drop(const std::string& nameItem)
 {
-	bool isDropped = false;
+	Entity* entity = findByName(nameItem);
 
-	for (Entity* item : containerEntities)
+	if (entity != nullptr && entity->type == EntityType::ITEM)
 	{
-		if (toLowerCase(item->name) == nameItem)
-		{
-			item->updateParent(location);
-			std::cout << "You leave " + item->name + " on the floor." << std::endl;
-			isDropped = true;
-			break;
-		}
+		entity->updateParent(location);
+		std::cout << "You leave " + entity->name + " on the floor." << std::endl;
+	}
+	else
+	{
+		std::cout << "I don't have anything like that to drop it." << std::endl;
 	}
 
-	if (!isDropped)
-		std::cout << "I don't have anything like that to drop it." << std::endl;
 }
 
 void Player::put(const std::vector<std::string>& argUser)
