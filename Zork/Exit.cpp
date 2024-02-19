@@ -2,13 +2,14 @@
 #include "Room.h"
 
 
-Exit::Exit(const std::string& dir, const std::string& nameExit, const std::string& descriptionExit, Entity* parent1, Entity* parent2)
+Exit::Exit(const std::string& dir, const std::string& nameExit, const std::string& descriptionExit, Entity* parent1, Entity* parent2, bool exitLocked)
 	:Entity(nameExit, descriptionExit,parent1)
 {
 	type = EntityType::EXIT;
 
 	dirSource = dir;
 	detectOpositeDir(dir);
+	isLocked = exitLocked;
 
 	source = static_cast<Room*>(parent1);
 	destination = static_cast<Room*>(parent2);
