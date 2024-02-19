@@ -99,77 +99,53 @@ void Player::drop(const std::string& nameItem)
 
 void Player::put(const std::vector<std::string>& argUser)
 {
-	std::list<Item*> itemsMentioned;
-
-	std::string itemToBePutted = argUser[1];
-	std::string itemDestiny = argUser[3];
 	bool isPutted = false;
-	bool bothItems = false;
 
-	Entity* item = findByName(itemToBePutted);
-	
 	if (argUser[1] == argUser[3])
 	{
 		std::cout << "Are you serious?..." << std::endl;
 		return;
 	}
 
-	if (item != nullptr)
+	std::string nameItemToPut = argUser[1];
+	Item* itemToBePutted = static_cast<Item*>(findByName(nameItemToPut));
+
+	if (itemToBePutted == nullptr)
 	{
-		itemsMentioned.push_back(static_cast<Item*>(item));
-	}
-	else {
 		std::cout << "I don't have an item called like that." << std::endl;
 		return;
 	}
 	
-	item = findByName(itemDestiny);
+	std::string nameItemContainer = argUser[3];
+	Entity* itemContainer = findByName(nameItemContainer);
 
-	if (item != nullptr)
-	{
-		itemsMentioned.push_back(static_cast<Item*>(item));
-	}
-	else { //search container in room
-		item = location->findByName(itemDestiny);
+	if (itemContainer == nullptr)
+	{ //search container in player's location
 
-		if (item != nullptr)
-		{
-			itemsMentioned.push_back(static_cast<Item*>(item));
-		}
-		else
+		itemContainer = location->findByName(nameItemContainer);
+
+		if (itemContainer == nullptr)
 		{
 			std::cout << "I don't find any container with that name." << std::endl;
 			return;
 		}
+		else if (itemContainer->type != EntityType::ITEM)
+		{
+			std::cout << itemContainer->name + " is not a container..." << std::endl;
+			return;
+		}
 	}
 
-	bothItems = itemsMentioned.front()->type == EntityType::ITEM ? true : false;
-	bothItems = itemsMentioned.back()->type == EntityType::ITEM ? true : false;
-
-	if (bothItems)
+	if (static_cast<Item*>(itemContainer)->isItemAContainer)
 	{
-		if (itemsMentioned.front()->isItemAContainer && toLowerCase(itemsMentioned.front()->name) == itemDestiny)
-		{
-			itemsMentioned.back()->updateParent(itemsMentioned.front());
-			isPutted = true;
-		}
-		else if (itemsMentioned.back()->isItemAContainer && toLowerCase(itemsMentioned.back()->name) == itemDestiny)
-		{
-			itemsMentioned.front()->updateParent(itemsMentioned.back());
-			isPutted = true;
-		}
-		else
-		{
-			std::cout << "I cannot put " + itemToBePutted + " inside " + itemDestiny + "..." << std::endl;
-		}
+		itemToBePutted->updateParent(itemContainer);
+		std::cout << "Putted inside " + itemContainer->name + "." << std::endl;
 	}
-	else {
-		std::cout << "I can't do that." << std::endl;
+	else
+	{
+		std::cout << "I cannot put " + itemToBePutted->name + " inside " + itemContainer->name + "..." << std::endl;
 	}
 
-	if (isPutted)
-		std::cout << "Putted inside " + itemDestiny + "." << std::endl;
-	
 }
 
 ////PENDING CASE TO OPEN DOOR WITH KEY AND WITHOUT KEY (REQUIRED TWO ARGUMENTS)
