@@ -24,7 +24,7 @@ public:
 	void open(const std::vector<std::string>& argUser);
 	void talk();
 
-	Item* findContainerItem(const std::string& nameItem);
+	Entity* checkContainerItem(const std::string& nameItem);
 
 	Room* location;
 };

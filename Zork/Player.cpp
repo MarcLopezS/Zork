@@ -86,25 +86,10 @@ void Player::take(const std::vector<std::string>& argUser)
 		return;
 	}
 
-	std::string nameItemContainer = argUser[3];
-	Entity* itemContainer = findByName(nameItemContainer);
+	Entity* itemContainer = checkContainerItem(argUser[3]);
 
 	if (itemContainer == nullptr)
-	{ //search container in player's location
-
-		itemContainer = location->findByName(nameItemContainer);
-
-		if (itemContainer == nullptr)
-		{
-			std::cout << "I don't find any container with that name." << std::endl;
-			return;
-		}
-		else if (itemContainer->type != EntityType::ITEM)
-		{
-			std::cout << itemContainer->name + " is not a container..." << std::endl;
-			return;
-		}
-	}
+		return;
 	
 	if (!(static_cast<Item*>(itemContainer)->isItemAContainer))
 	{
@@ -158,25 +143,10 @@ void Player::put(const std::vector<std::string>& argUser)
 		return;
 	}
 	
-	std::string nameItemContainer = argUser[3];
-	Entity* itemContainer = findByName(nameItemContainer);
+	Entity* itemContainer = checkContainerItem(argUser[3]);
 
 	if (itemContainer == nullptr)
-	{ //search container in player's location
-
-		itemContainer = location->findByName(nameItemContainer);
-
-		if (itemContainer == nullptr)
-		{
-			std::cout << "I don't find any container with that name." << std::endl;
-			return;
-		}
-		else if (itemContainer->type != EntityType::ITEM)
-		{
-			std::cout << itemContainer->name + " is not a container..." << std::endl;
-			return;
-		}
-	}
+		return;
 
 	if (static_cast<Item*>(itemContainer)->isItemAContainer)
 	{
@@ -277,22 +247,26 @@ void Player::talk()
 	}
 }
 
-Item* Player::findContainerItem(const std::string& nameItem)
+Entity* Player::checkContainerItem(const std::string& nameItem)
 {
-	Item* item;
+	Entity* itemContainer = findByName(nameItem);
 
-	for (Entity* entity : containerEntities)
-	{
-		if (entity->type == EntityType::ITEM)
+	if (itemContainer == nullptr)
+	{ //search container in player's location
+
+		itemContainer = location->findByName(nameItem);
+
+		if (itemContainer == nullptr)
 		{
-			item = static_cast<Item*>(entity);
-
-			if (item->name == nameItem && item->isItemAContainer)
-			{
-				return item;
-			}
+			std::cout << "I don't find any container with that name." << std::endl;
+			return nullptr;
+		}
+		else if (itemContainer->type != EntityType::ITEM)
+		{
+			std::cout << itemContainer->name + " is not a container..." << std::endl;
+			return nullptr;
 		}
 	}
 
-	return nullptr;
+	return itemContainer;
 }
