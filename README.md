@@ -69,7 +69,11 @@ And, in this one, explains all the commands you have to use in order to complete
 
 ## Experience doing this project
 
-At first, the game was so much difficul due to the lack of clues that was giving you. I thought that the experience of the player will be painful and also hard to reach through the end. Because of that, I though about implementing dialogues with specific characters in order to help the player have a better experience, don't loose track of the main path and also, and most important, **FUN!**.
+At first, the game was so difficult due to the lack of clues that the game itself was giving you. I thought that the experience of the player will be painful and also hard to reach through the end. Because of that, I though about implementing dialogues with specific characters in order to help the player have a better experience, don't loose track of the main path and, the most important, **FUN!**.
+
+My thought about implementing dialogues with NPCs was a bit complex due to the texts with the requirement that I imposed myself. That one was reading from an external document and then store all the data within the code. I prefered to use JSON, because it's a format that I like to treat with data. Then I had to approach how could I use that data and make the characters reach though their specific dialogs. For that, I approached to do a controller that controls all the dialogues, depending on who NPC was speaking at the moment. In the end, I made it possible to implement this feature that it's very interesting and very useful in this game. 
+
+What I struggled was at first about how to relate the different types of entities inside the game. However, during the process of understanding and the requirements of each class I arrived at the conclusion and get the structure that now the code has. Thanks to that, I was able to make profit of the class Entity to get to the final results I wanted.  
 
 ## Contact information
 
