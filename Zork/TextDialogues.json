@@ -5,13 +5,12 @@
 		"Mom_D3": "Is something wrong sweetheart? You need to prepare to go to school.",
 		"Mom_D4": "Strange noises in my bedroom? You must still be sleepy.",
 		"Brother_D1": "Let me sleep 5 more minutes...zzz..zzz..",
-		"Stranger_D1": "Hey boy! Help me out! I'm tied to your mother's bed and I can't free myself.",
-		"Stranger_D2": "I need some scissors and my phone. I don't know where it is.",
-		"Stranger_D3": "I found your house key, it will be yours if you help me. Deal?",
-		"Stranger_D4": "Please, you still need to find my phone and scissors.",
-		"Stranger_D5": "Perfect, find my phone and the key is yours.",
-		"Stranger_D6": "Perfect, find some scissors and the key is yours.",
-		"Stranger_D7": "Thank you so much! Here, let me give you the key of your house.",
-		"Stranger_D8": "I'll wait here until your mother leaves the living room to go through the window. Thanks again for your help!"
+		"Stranger_D1": "Hey boy! Help me out! I'm tied to your mother's bed and I can't free myself. ... just.. untie...there...",
+		"Stranger_D2": "Thank you so much! As a regard I would tell you that I've seen your brother with a key.",
+		"Stranger_D3": "Maybe that's what you are looking for.",
+		"Stranger_D4": "In this room must be the copy key of your brother's bedroom.",
+		"Stranger_D5": "Thanks again for your help!",
+		"Stranger_D6": "I'll wait here until your mother leaves the lining room so I can escape through the window."
+
 
 }

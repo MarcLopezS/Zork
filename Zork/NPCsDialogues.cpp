@@ -61,24 +61,21 @@ void NPCsDialogues::strangerDialogue(int& stateDialog)
 	if (stateDialog == 1)
 	{
 		dialogueFormat(keyDialog, NPCType::STRANGER);
-		keyDialog = "Stranger_D" + std::to_string(stateDialog + 1);
+		stateDialog++;
+		keyDialog = "Stranger_D" + std::to_string(stateDialog);
 		dialogueFormat(keyDialog, NPCType::STRANGER);
-		keyDialog = "Stranger_D" + std::to_string(stateDialog + 2);
+		stateDialog++;
+		keyDialog = "Stranger_D" + std::to_string(stateDialog);
 		dialogueFormat(keyDialog, NPCType::STRANGER);
-
-		stateDialog += 3;
+		stateDialog++;  
+		keyDialog = "Stranger_D" + std::to_string(stateDialog);
+		dialogueFormat(keyDialog, NPCType::STRANGER);
+		stateDialog++;
 	}
-	else if (stateDialog == 4)
-	{   
-		//TODO: check additional dialogues if player has specific objects in inventory
-		dialogueFormat(keyDialog, NPCType::STRANGER);
-		
-	}
-	else if (stateDialog == 7)
+	else if (stateDialog == 5)
 	{
 		dialogueFormat(keyDialog, NPCType::STRANGER);
-		keyDialog = "Stranger_D" + std::to_string(stateDialog + 1);
-		dialogueFormat(keyDialog, NPCType::STRANGER);
+		keyDialog = "Stranger_D" + std::to_string(stateDialog);
 		stateDialog++;
 	}
 	else {
