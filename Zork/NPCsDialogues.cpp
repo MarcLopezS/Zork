@@ -18,6 +18,7 @@ void NPCsDialogues::dialogueController(NPCType npcType, int& stateDialog)
 		momController(stateDialog);
 		break;
 	case NPCType::BROTHER:
+		brotherController(stateDialog);
 		break;
 	case NPCType::STRANGER:
 		break;
@@ -43,4 +44,11 @@ void NPCsDialogues::momController(int& stateDialog)
 		
 		std::cout << "Mom: " + allDialogues[keyDialog] << std::endl;
 	}
+}
+
+void NPCsDialogues::brotherController(int& stateDialog)
+{
+	std::string keyDialog = "Brother_D" + std::to_string(stateDialog);
+
+	std::cout << "Matias: " + allDialogues[keyDialog] << std::endl;
 }

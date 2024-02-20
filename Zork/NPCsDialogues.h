@@ -16,6 +16,7 @@ public:
 
 	void dialogueController(NPCType npcType, int& stateDialog);
 	void momController(int& stateDialog);
+	void brotherController(int& stateDialog);
 	
 	std::map<std::string, std::string> allDialogues;
 };
