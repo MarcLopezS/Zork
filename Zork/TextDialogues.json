@@ -1,16 +1,16 @@
 {
-	
-		"Mom_D1": "Good morning sweetheart. Did you sleep well?",
-		"Mom_D2": "Before you go to school, there is a sandwich I made you in the kitchen.",
-		"Mom_D3": "Is something wrong sweetheart? You need to prepare to go to school.",
-		"Mom_D4": "Strange noises in my bedroom? You must still be sleepy.",
-		"Brother_D1": "Let me sleep 5 more minutes...zzz..zzz..",
-		"Stranger_D1": "Hey boy! Help me out! I'm tied to your mother's bed and I can't free myself. ... just.. untie...there...",
-		"Stranger_D2": "Thank you so much! As a regard I would tell you that I've seen your brother with a key.",
-		"Stranger_D3": "Maybe that's what you are looking for.",
-		"Stranger_D4": "In this room must be the copy key of your brother's bedroom.",
-		"Stranger_D5": "Thanks again for your help!",
-		"Stranger_D6": "I'll wait here until your mother leaves the lining room so I can escape through the window."
+
+	"Mom_D1": "Good morning sweetheart. Did you sleep well?",
+	"Mom_D2": "Before you go to school, there is a sandwich I made you in the kitchen.",
+	"Mom_D3": "Is something wrong, sweetheart? You need to get ready to go to school.",
+	"Mom_D4": "Strange noises in my bedroom? You must still be sleepy.",
+	"Brother_D1": "Let me sleep 5 more minutes...zzz..zzz..",
+	"Stranger_D1": "Hey buddy! Can you give me a hand? I'm tied to your mom's bed and can't get free. If you could just... untie me... there...",
+	"Stranger_D2": "Thanks a lot! Just so you know, I saw your brother with a key yesterday.",
+	"Stranger_D3": "Maybe that's what you are looking for.",
+	"Stranger_D4": "In this room must be the copy key of your brother's bedroom.",
+	"Stranger_D5": "Thanks again for your help!",
+	"Stranger_D6": "I'll wait here until your mother leaves the living room so I can escape through the window."
 
 
 }
