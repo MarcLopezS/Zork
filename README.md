@@ -22,7 +22,8 @@ In order to know how to play my version of Zork, you need to know all the comman
 - `OPEN [Name of the door]` -> You open the specified door. It requires to have the corresponding key in your inventory. Be aware that all doors have **two** words in its name. For example: `>> OPEN Matias's door` .
 - `TALK` -> You talk with the person that shares the same room as you. Don't try to talk alone, you are not crazy, right?
 - `QUIT / Q` -> You exit the game. For example: `>> Q` .
-
+- `HELP` -> Displays this list of commands inside the game.
+  
 ### Map
 
 In here you'll find the map of the game. It will help you to not getting lost.
