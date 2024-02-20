@@ -40,6 +40,10 @@ int main()
 
     std::cout << "\nThank you for playing!" << std::endl;
 
+    std::cout << "\nPress any key to exit game." << std::endl;
+
+    std::getline(std::cin, input);
+
     return 0;
 }
 

@@ -36,7 +36,7 @@ void World::setupGame()
 	Room* brother_bedroom = new Room("Matias's Bedroom", "The bedroom of my brother. Everything is on the floor as usual...");
 	Room* house_entrance = new Room(nameRoomGameOver, "The front entrance. Very colorful with all kinds of flowers surrounding the entrance.");
 	Room* kitchen = new Room("Kitchen", "My paradise. In here it is cooked the best meals I've ever tasted.");
-	Room* hallway = new Room("Hallway", "In here there is the access to another bathroom and Matias's bedroom.");
+	Room* hallway = new Room("Hallway", "In here there is the access to the bathroom and Matias's bedroom.");
 
 	entities.push_back(bedroom);
 	entities.push_back(livingRoom);

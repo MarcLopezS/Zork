@@ -8,6 +8,7 @@ NPCsDialogues::NPCsDialogues()
 
 NPCsDialogues::~NPCsDialogues()
 {
+	allDialogues.clear();
 }
 
 void NPCsDialogues::dialogueController(NPCType npcType, int& stateDialog)

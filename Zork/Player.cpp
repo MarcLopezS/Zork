@@ -39,7 +39,7 @@ void Player::go(const std::string& userCommand)
 				return;
 			}
 			else {
-				std::cout << "The door is locked." << std::endl;
+				std::cout << ex->name + " is locked." << std::endl;
 				return;
 			}
 			
