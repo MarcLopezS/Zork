@@ -10,6 +10,7 @@
 
 World::World()
 {
+	nameRoomGameOver = "Front entrance";
 	isGameOver = false;
 	setupGame();
 }
@@ -33,7 +34,7 @@ void World::setupGame()
 	Room* bathroom = new Room("Bathroom", "This is my beloved bathroom.");
 	Room* mother_bedroom = new Room("Mom's bedroom", "Always very tidy and clean. My mother doesn't want us to be around here, so it's better to not touch anything.");
 	Room* brother_bedroom = new Room("Matias's Bedroom", "The bedroom of my brother. Everything is on the floor as usual...");
-	Room* house_entrance = new Room("Front entrance", "The front entrance. Very colorful with all kinds of flowers surrounding the entrance.");
+	Room* house_entrance = new Room(nameRoomGameOver, "The front entrance. Very colorful with all kinds of flowers surrounding the entrance.");
 	Room* kitchen = new Room("Kitchen", "My paradise. In here it is cooked the best meals I've ever tasted.");
 	Room* hallway = new Room("Hallway", "In here there is the access to another bathroom and Matias's bedroom.");
 
@@ -231,12 +232,6 @@ bool World::handleThreeArguments(std::vector<std::string>& arguments)
 	return handleOK;
 }
 
-void World::checkGameOver()
-{
-	isGameOver = true;
-	std::cout << "GAME OVER" << std::endl;
-}
-
 void World::printCurrentRoom() const
 {
 	std::cout << player->location->name << std::endl;
@@ -252,4 +247,17 @@ void World::checkFirstTimeRoom()
 
 		player->location->seeFirstTime();
 	}
+}
+
+void World::checkGameOver()
+{
+	isGameOver = true;
+	std::cout << "GAME OVER" << std::endl;
+}
+
+
+void World::playerReachRoomEnd()
+{
+	if (player->location->name == nameRoomGameOver)
+		checkGameOver();
 }

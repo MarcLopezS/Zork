@@ -35,6 +35,7 @@ int main()
         if (!world.parseUserCommand(userCommands))
             std::cout << "That's not a command I recognise or have been used in the wrong way.\n" << std::endl;
         
+        world.playerReachRoomEnd();
     }
 
     std::cout << "\nThank you for playing!" << std::endl;

@@ -1,2 +1,9 @@
-﻿  World.cpp
+﻿  Entity.cpp
+  Exit.cpp
+  Item.cpp
+  Player.cpp
+  Room.cpp
+  World.cpp
+  main.cpp
+  Generating Code...
   Zork.vcxproj -> C:\Users\GAMER\Desktop\Proyecto juego plataformas\Zork\Zork\Debug\Zork.exe

@@ -19,17 +19,22 @@ public:
 	void setupGame();
 	
 	bool parseUserCommand(std::vector<std::string>& arguments);
+	
 	bool handleOnlyCommand(const std::string& command);
 	bool handleOneArgument(std::vector<std::string>& arguments);
 	bool handleTwoArguments(std::vector<std::string>& arguments);
 	bool handleThreeArguments(std::vector<std::string>& arguments);
-	void checkGameOver();
+	
 	void printCurrentRoom() const;
 	void checkFirstTimeRoom();
+	
+	void playerReachRoomEnd();
+	void checkGameOver();
 
 	std::vector<Entity*> entities;
 
 	bool isGameOver;
+	std::string nameRoomGameOver;
 	
 	NameCommands nameCommand;
 	Player* player;
