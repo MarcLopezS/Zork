@@ -188,8 +188,6 @@ void Player::open(const std::string& nameEntityToOpen)
 //Two Arguments (unlock exits)
 void Player::open(const std::vector<std::string>& argUser)
 {
-	Item* item;
-	
 	std::string nameExit = argUser[1] + " " + argUser[2];
 	Exit* lockedExit = static_cast<Exit*>(location->findByName(nameExit));
 
@@ -204,32 +202,8 @@ void Player::open(const std::vector<std::string>& argUser)
 		return;
 	}
 
-	for (Entity* entity : containerEntities)
-	{
-		item = static_cast<Item*>(entity);
-
-		if (item->isItemAContainer)
-		{
-			for (Entity* itemInContainer : item->containerEntities)
-			{
-				if (static_cast<Item*>(itemInContainer)->exitToUnlock == lockedExit)
-				{
-					item = static_cast<Item*>(itemInContainer);
-					break;
-				}
-			}
-		}
-
-		if (item->exitToUnlock == lockedExit)
-		{
-			lockedExit->lockUnlock();
-			std::cout << "You opened " + lockedExit->name + " with " + item->name + "." << std::endl;
-			return;
-		}
-		
-	}
-
-	std::cout << "You don't have the key to open this door." << std::endl;
+	if(!hasKey(lockedExit))
+		std::cout << "You don't have the key to open this door." << std::endl;
 
 }
 
@@ -252,8 +226,8 @@ Entity* Player::checkContainerItem(const std::string& nameItem)
 	Entity* itemContainer = findByName(nameItem);
 
 	if (itemContainer == nullptr)
-	{ //search container in player's location
-
+	{ 
+		//search container in player's location
 		itemContainer = location->findByName(nameItem);
 
 		if (itemContainer == nullptr)
@@ -269,4 +243,46 @@ Entity* Player::checkContainerItem(const std::string& nameItem)
 	}
 
 	return itemContainer;
+}
+
+bool Player::hasKey(Exit* lockedExit)
+{
+	Item* item;
+
+	//check if there is a key to open lockedExit
+	for (Entity* entity : containerEntities)
+	{
+		item = static_cast<Item*>(entity);
+
+		if (item->isItemAContainer)
+		{
+			//checks inside container
+			for (Entity* itemInContainer : item->containerEntities)
+			{
+				if (static_cast<Item*>(itemInContainer)->exitToUnlock == lockedExit)
+				{
+					item = static_cast<Item*>(itemInContainer);
+					break;
+				}
+			}
+		}
+
+		if (isExitOpened(item, lockedExit))
+			return true;
+
+	}
+
+	return false;
+}
+
+bool Player::isExitOpened(Item* item, Exit* lockedExit)
+{
+	if (item->exitToUnlock == lockedExit)
+	{
+		lockedExit->lockUnlock();
+		std::cout << "You opened " + lockedExit->name + " with " + item->name + "." << std::endl;
+		return true;
+	}
+
+	return false;
 }

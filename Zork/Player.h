@@ -5,6 +5,7 @@
 
 
 class Item;
+class Exit;
 
 class Player : public Creature
 {
@@ -25,6 +26,8 @@ public:
 	void talk();
 
 	Entity* checkContainerItem(const std::string& nameItem);
+	bool hasKey(Exit* lockedExit);
+	bool isExitOpened(Item* item, Exit* lockedExit);
 
 	Room* location;
 };
