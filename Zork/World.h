@@ -14,6 +14,7 @@ class World
 public:
 	
 	World();
+	~World();
 
 	void setupGame();
 	

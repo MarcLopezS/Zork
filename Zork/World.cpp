@@ -12,7 +12,18 @@ World::World()
 {
 	isGameOver = false;
 	setupGame();
+}
+
+World::~World()
+{
+	for (Entity* entity : entities)
+		delete(entity);
+
+	entities.clear();
+	player = nullptr;
 	
+	delete(allDialogues);
+
 }
 
 void World::setupGame()
@@ -37,25 +48,27 @@ void World::setupGame()
 
 	Exit* exitBedroom = new Exit(nameCommand.SOUTH_1, "Bedroom door", "This door comunicates my bedroom with the living room.", bedroom, livingRoom);
 	Exit* exitBathroom = new Exit(nameCommand.NORTH_1, "Bathroom door", "This door communicates the hallway with the bathroom.", hallway, bathroom);
-	Exit* exitMatiasBedroom = new Exit(nameCommand.WEST_1, "Matias bedroom", "This door communicates my bedroom with the bathroom.", hallway, brother_bedroom);
+	Exit* exitBrotherBedroom = new Exit(nameCommand.WEST_1, "Matias's door", "This door communicates my bedroom with the bathroom.", hallway, brother_bedroom, true);
 	Exit* exitHallway = new Exit(nameCommand.EAST_1, "Hallway door", "This door communicates my the living room with the hallway.", hallway, livingRoom);
 	Exit* exitKitchen = new Exit(nameCommand.WEST_1, "Kitchen access", "This access communicates the kitchen with the living room.", kitchen, livingRoom);
-	Exit* exitEntranceHouse = new Exit(nameCommand.SOUTH_1, "House entrance", "The door entrance of my house.", livingRoom, house_entrance);
-	Exit* exitMomBedroom = new Exit(nameCommand.UP_1, "Mom's door", "This door communicates my mother's bedroom with the stairs in the living room.", livingRoom, mother_bedroom);
+	Exit* exitEntranceHouse = new Exit(nameCommand.SOUTH_1, "House entrance", "The door entrance of my house.", livingRoom, house_entrance,true);
+	Exit* exitMotherBedroom = new Exit(nameCommand.UP_1, "Mom's door", "This door communicates my mother's bedroom with the stairs in the living room.", livingRoom, mother_bedroom,true);
 
 	entities.push_back(exitBedroom);
 	entities.push_back(exitBathroom);
-	entities.push_back(exitMatiasBedroom);
+	entities.push_back(exitBrotherBedroom);
 	entities.push_back(exitHallway);
 	entities.push_back(exitKitchen);
 	entities.push_back(exitEntranceHouse);
-	entities.push_back(exitMomBedroom);
+	entities.push_back(exitMotherBedroom);
 	
 
 	Item* photo = new Item("Photo", "This is a memory of my family going to the mountains.", bedroom, false);
 	Item* bottle = new Item("Bottle", "I use this bottle for drinking outside home.", livingRoom,false);
 	Item* backpack = new Item("Backpack", "My favourite backpack. It's a little worn.", bedroom, true);
-	//Item* keyBedroom = new Item("KeyBed", "This is the key to open and close my bedroom", bedroom, false, exitBedroom);
+	Item* keyMom = new Item("Key1", "This is the key to open and close Mom's Bedroom", kitchen, false, exitMotherBedroom);
+	Item* keyMatias = new Item("Key2", "This is the key to open and close Matias Bedroom", mother_bedroom, false, exitBrotherBedroom);
+	Item* keyHouse = new Item("Key3", "This is the key to open and close the house", brother_bedroom, false, exitEntranceHouse);
 
 	entities.push_back(photo);
 	entities.push_back(bottle);
@@ -69,9 +82,9 @@ void World::setupGame()
 	NPCsDialogues* allDialoguesNPCs = new NPCsDialogues(); //REMINDER: free up memory in destructor
 	allDialogues = allDialoguesNPCs;
 
-	NPC* mother = new NPC("Mom", "There is my mother, lying on the sofa.", livingRoom,NPCType::MOM, allDialoguesNPCs);
+	NPC* mother = new NPC("Mom", "Here it is my beloved mother.", livingRoom,NPCType::MOM, allDialoguesNPCs);
 	NPC* brother = new NPC("Matias", "There is my annoying brother, still sleeping...", brother_bedroom, NPCType::BROTHER, allDialoguesNPCs);
-	NPC* stranger = new NPC("Stranger", "There is someone tied at the corner of the bed. One of Mom's adventures? Disgusting ...", mother_bedroom, NPCType::STRANGER, allDialoguesNPCs);
+	NPC* stranger = new NPC("Stranger", "There is someone tied at the corner of the bed. One of Mom's adventures? Gross ...", mother_bedroom, NPCType::STRANGER, allDialoguesNPCs);
 	
 	entities.push_back(mother);
 	entities.push_back(brother);
