@@ -14,8 +14,8 @@ public:
 	NPCsDialogues();
 	~NPCsDialogues();
 
-	void dialogueController(NPCType npcType, int stateDialog);
-	void momController(int stateDialog);
+	void dialogueController(NPCType npcType, int& stateDialog);
+	void momController(int& stateDialog);
 	
 	std::map<std::string, std::string> allDialogues;
 };

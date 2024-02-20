@@ -36,4 +36,3 @@ public:
 };
 
 #endif //World_h
-

@@ -1,8 +1,17 @@
 {
 	
-		"Mom_D1": "Good morning sweetheart.",
-		"Mom_D2": "There is some fruit on the table.",
+		"Mom_D1": "Good morning sweetheart. Did you sleep well?",
+		"Mom_D2": "Before you go to school, there is a sandwich I made you in the kitchen.",
+		"Mom_D3": "Is something wrong sweetheart? You need to prepare to go to school.",
+		"Mom_D4": "Strange noises in my bedroom? You must still be sleepy.",
 		"Brother_D1": "Let me sleep 5 more minutes...zzz..zzz..",
-		"Stranger_D1": "Hey boy! Do you want to know a secret?"	
-	
+		"Stranger_D1": "Hey boy! Help me out! I'm tied to your mother's bed and I can't free myself.",
+		"Stranger_D2": "I need some scissors and my phone. I don't know where it is.",
+		"Stranger_D3": "I found your house key, it will be yours if you help me. Deal?",
+		"Stranger_D4": "Please, you still need to find my phone and scissors.",
+		"Stranger_D5": "Perfect, find my phone and the key is yours.",
+		"Stranger_D6": "Perfect, find some scissors and the key is yours.",
+		"Stranger_D7": "Thank you so much! Here, let me give you the key of your house.",
+		"Stranger_D7": "I'll go through the window so your mother doesn't see me. Thanks again for your help!"
+
 }
