@@ -12,6 +12,7 @@ Item::Item(const std::string& nameItem, const std::string& descriptItem, Entity*
 
 Item::~Item()
 {
+	exitToUnlock = nullptr;
 }
 
 void Item::look()

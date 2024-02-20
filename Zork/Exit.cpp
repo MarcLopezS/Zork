@@ -18,6 +18,12 @@ Exit::Exit(const std::string& dir, const std::string& nameExit, const std::strin
 		destination->containerEntities.push_back(this);
 }
 
+Exit::~Exit()
+{
+	source = nullptr;
+	destination = nullptr;
+}
+
 void Exit::detectOpositeDir(const std::string& dirSource)
 {
 	if (dirSource == nameComm.NORTH_1 || dirSource == nameComm.NORTH_2)

@@ -15,6 +15,7 @@ Player::Player(const std::string& namePlayer, const std::string descriptPlayer, 
 
 Player::~Player()
 {
+	location = nullptr;
 }
 
 void Player::go(const std::string& userCommand)

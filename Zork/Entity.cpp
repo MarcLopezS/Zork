@@ -12,6 +12,8 @@ Entity::Entity(const std::string& nameEntity, const std::string& descriptionEnti
 
 void Entity::look()
 {
+	containerEntities.clear();
+	parent = nullptr;
 }
 
 std::list<Entity*> Entity::findAll(EntityType type)

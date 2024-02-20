@@ -11,6 +11,7 @@ class Exit : public Entity
 public:
 
 	Exit(const std::string& dir, const std::string& nameExit, const std::string& descriptionExit, Entity* parent1, Entity* parent2, bool exitLocked = false);
+	~Exit();
 
 	void detectOpositeDir(const std::string& dirSource);
 	std::string dirExitRoom(Room* room);
