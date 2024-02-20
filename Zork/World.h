@@ -26,6 +26,7 @@ public:
 	bool handleThreeArguments(std::vector<std::string>& arguments);
 	
 	void printCurrentRoom() const;
+	void printHelpCommand() const;
 	void checkFirstTimeRoom();
 	
 	void playerReachRoomEnd();

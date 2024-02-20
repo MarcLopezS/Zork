@@ -164,6 +164,10 @@ bool World::handleOnlyCommand(const std::string& command)
 	{
 		player->talk();
 	}
+	else if (command == nameCommand.HELP)
+	{
+		printHelpCommand();
+	}
 	else if (command == nameCommand.QUIT_1 || command == nameCommand.QUIT_2)
 	{
 		checkGameOver();
@@ -239,6 +243,29 @@ bool World::handleThreeArguments(std::vector<std::string>& arguments)
 void World::printCurrentRoom() const
 {
 	std::cout << player->location->name << std::endl;
+}
+
+void World::printHelpCommand() const
+{
+	std::cout << "Here is a list of all the commands you can use and their usage: \n" << std::endl;
+
+	std::cout << nameCommand.NORTH_1 + " / " + nameCommand.NORTH_2 + " -> Moves the player to NORTH direction. Ex: >> NORTH, >> n .\n" << std::endl;
+	std::cout << nameCommand.SOUTH_1 + " / " + nameCommand.SOUTH_2 + " -> Moves the player to SOUTH direction. Ex: >> SOUTH, >> s .\n" << std::endl;
+	std::cout << nameCommand.EAST_1 + " / " + nameCommand.EAST_2 + " -> Moves the player to EAST direction. Ex: >> EAST, >> e .\n" << std::endl;
+	std::cout << nameCommand.WEST_1 + " / " + nameCommand.WEST_2 + " -> Moves the player to WEST direction. Ex: >> WEST, >> w .\n" << std::endl;
+	std::cout << nameCommand.UP_1 + " / " + nameCommand.UP_2 + " -> Moves the player to UP direction. Ex: >> UP, >> u .\n" << std::endl;
+	std::cout << nameCommand.DOWN_1 + " / " + nameCommand.DOWN_2 + " -> Moves the player to DOWN direction. Ex: >> DOWN, >> d .\n" << std::endl;
+	std::cout << nameCommand.LOOK_1 + " / " + nameCommand.LOOK_2 + " -> You look in the actual room and identify all the objects you can interact with.\n" << std::endl;
+	std::cout << nameCommand.INVENTORY_1 + " / " + nameCommand.INVENTORY_2 + " -> Shows all the items you have in your inventory.\n" << std::endl;
+	std::cout << nameCommand.TAKE + " [item] -> You collect the specified item that is in the room and put it in your inventory. For example: >> TAKE Apple .\n" << std::endl;
+	std::cout << nameCommand.TAKE +" [item] "+ nameCommand.FROM + " [container] -> You collect the specified item that is inside a container. The container does not require to be in your inventory. For example: >> TAKE Bottle FROM Backpack .\n" << std::endl;
+	std::cout << nameCommand.DROP + " [item] -> You leave the specified item that is in your inventory on the floor. For example: >> DROP Bottle .\n" << std::endl;
+	std::cout << nameCommand.PUT + " [item] " + nameCommand.IN + " [container] -> You put the item specified that is in your inventory to a container. The container does not require to be in your inventory. For example: >> PUT Apple IN Backpack .\n" << std::endl;
+	std::cout << nameCommand.OPEN + " [container] -> You see a list of all the items inside the container. The container does not require to be in your inventory. For example: >> OPEN backpack .\n" << std::endl;
+	std::cout << nameCommand.OPEN + " [Name of door] -> You open the specified door. It requires to have the corresponding key in your inventory. Be aware that all doors have two words in its name. For example: >> OPEN Matias's door .\n" << std::endl;
+	std::cout << nameCommand.TALK + " -> You talk with the person that shares the same room as you. Don't try to talk alone, you are not crazy, right? .\n" << std::endl;
+	std::cout << nameCommand.QUIT_1 + " / " + nameCommand.QUIT_2 + " -> You exit the game. For example: >> Q .\n" << std::endl;
+
 }
 
 void World::checkFirstTimeRoom()
