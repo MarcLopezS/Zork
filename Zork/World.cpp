@@ -65,16 +65,20 @@ void World::setupGame()
 	
 
 	Item* photo = new Item("Photo", "This is a memory of my family going to the mountains.", bedroom, false);
-	Item* bottle = new Item("Bottle", "I use this bottle for drinking outside home.", livingRoom,false);
-	Item* backpack = new Item("Backpack", "My favourite backpack. It's a little worn.", bedroom, true);
+	Item* bottle = new Item("Bottle", "I use this bottle for drinking outside of home.", livingRoom,false);
+	Item* backpack = new Item("Backpack", "My favourite backpack. It's a bit worn.", bedroom, true);
+	Item* apple = new Item("Apple", "There is an apple in the fruit basket", kitchen, false);
 	Item* keyMom = new Item("Key1", "This is the key to open and close Mom's Bedroom", kitchen, false, exitMotherBedroom);
-	Item* keyMatias = new Item("Key2", "This is the key to open and close Matias Bedroom", mother_bedroom, false, exitBrotherBedroom);
+	Item* keyMatias = new Item("Key2", "This is the key to open and close Matias's Bedroom", mother_bedroom, false, exitBrotherBedroom);
 	Item* keyHouse = new Item("Key3", "This is the key to open and close the house", brother_bedroom, false, exitEntranceHouse);
 
 	entities.push_back(photo);
 	entities.push_back(bottle);
 	entities.push_back(backpack);
-	//entities.push_back(keyBedroom);
+	entities.push_back(apple);
+	entities.push_back(keyMom);
+	entities.push_back(keyMatias);
+	entities.push_back(keyHouse);
 
 	player = new Player("Marc", "The player of this game", bedroom);
 
